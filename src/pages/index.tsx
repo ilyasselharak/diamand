@@ -41,7 +41,7 @@ export default function Home() {
             clickable: true,
           }}
           modules={[Pagination]}
-          className="h-[250px] xl:h-[600px]  md:h-[500px] mt-2"
+          className="h-[210px] xl:h-[600px]  md:h-[500px] mt-2"
         >
           <SwiperSlide>
             <Image

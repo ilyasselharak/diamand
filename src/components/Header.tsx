@@ -8,7 +8,13 @@ function Header() {
     <div className="shadow-lg shadow-cyan-500/50">
       <div className="flex items-center justify-center flex-wrap md:justify-between w-[80%] mx-auto p-4">
         <div className="flex items-center">
-          <Image src={"/logo.png"} width={250} height={150} alt={"logo"} />
+          <Image
+            src={"/logo.png"}
+            className="w-[200px] h-[90px] md:w-[250px] md:h-[100px]"
+            width={250}
+            height={150}
+            alt={"logo"}
+          />
         </div>
         <div className=" text-xl flex-wrap gap-6  justify-center md:flex hidden text-2xl items-center">
           <Link
