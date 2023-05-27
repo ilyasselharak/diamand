@@ -11,6 +11,10 @@ import {
   FcCalendar,
   FcPhone,
   FcOk,
+  FcClock,
+  FcDepartment,
+  FcReuse,
+  FcInfo,
 } from "react-icons/fc";
 import { FiDollarSign } from "react-icons/fi";
 
@@ -146,27 +150,38 @@ export default function Home() {
           <div className="flip-card ">
             <div className="flip-card-inner rounded-xl">
               <div className="flip-card-front rounded-xl bg-cyan-500 text-white">
-                <div className="flex h-[80%] justify-between flex-col">
+                <div className="flex h-[90%] justify-between flex-col">
                   <div className="text-2xl border-b font-mono font-bold text-black border-gray-400 p-4">
                     Standard
                   </div>
+                  <div>Starting from:</div>
                   <div className="text-6xl flex items-center justify-center mt-4 font-medium ">
                     90
                     <FiDollarSign />
                   </div>
-                  <div className="text-yellow-400 bg-green-400 w-fit py-2 px-5 rounded-md mx-auto">
-                    details...
+                  <div className="text-white cursor-pointer sm:mt-4 bg-green-400 w-fit  flex items-center gap-1  py-2 px-5 rounded-md mx-auto">
+                    <FcInfo />
+                    Details
                   </div>
                 </div>
               </div>
               <div className="flip-card-back flex flex-col justify-around rounded-xl">
-                <div className="text-start w-[80%] mx-auto">
-                  <p>2 hours of cleaning</p>
-                  <p>kitchen + floor + 1 room</p>
-                  <p>big-house: 1000sq</p>
+                <div className="text-start w-[80%] mx-auto h-[150px] flex flex-col justify-around">
+                  <p className="flex items-center gap-1">
+                    <FcClock />
+                    1.5 / 2 hours Session
+                  </p>
+                  <p className="flex items-center gap-1">
+                    <FcReuse />
+                    kitchen + floor + 1 room
+                  </p>
+                  <p className="flex items-center gap-1">
+                    <FcDepartment />
+                    big-house: 1000sq
+                  </p>
                 </div>
                 <div className="w-full ">
-                  <button className="bg-cyan-500 shadow-lg text-center shadow-cyan-500/50 text-white px-6 py-3 rounded-xl w-fit ">
+                  <button className="bg-cyan-500  text-center text-white px-6 py-3 rounded-xl w-fit ">
                     <div className="flex items-center gap-2">
                       <FcCalendar /> Book Now
                     </div>
