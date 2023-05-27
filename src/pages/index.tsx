@@ -77,11 +77,11 @@ export default function Home() {
           We Will Clean Your House As Soon As Possible
         </div>
         <div className="flex gap-3 justify-center mt-3">
-          <button className="bg-cyan-500 shadow-lg shadow-cyan-500/50 text-white px-6 py-3 rounded-xl flex items-center gap-2">
+          <button className="bg-cyan-500 shadow-lg shadow-cyan-500/50 text-white px-6 py-3 rounded-xl w-fit flex items-center gap-2">
             <FcCalendar /> Book Now
           </button>
           <a href={`tel:1-781-367-6258`}>
-            <button className="bg-cyan-500 shadow-lg shadow-cyan-500/50 text-white px-6 py-3 rounded-xl flex items-center gap-2">
+            <button className="bg-cyan-500 shadow-lg shadow-cyan-500/50 text-white px-6 py-3 rounded-xl w-fit flex items-center gap-2">
               <FcPhone />
               Call Now
             </button>
