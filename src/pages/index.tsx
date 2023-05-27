@@ -22,7 +22,7 @@ export default function Home() {
       <Header />
       <div></div>
       <main className="w-[80%] h-[300px] md:h-[500px] mx-auto mt-4 ">
-        <div className="flex items-center justify-center text-xl md:text-3xl font-serif font-bold">
+        <div className="flex items-center justify-center text-md md:text-2xl font-serif font-bold">
           <Image
             alt="alt"
             className="w-[50px] md:w-[100px]"
@@ -30,7 +30,7 @@ export default function Home() {
             height={100}
             src={"/gem.gif"}
           />
-          <span className="text-md"> WELCOME TO KRYSTAL CLEANING SERVICES</span>
+          <span>WELCOME TO KRYSTAL CLEANING SERVICES</span>
         </div>
 
         <Swiper
@@ -75,10 +75,12 @@ export default function Home() {
           <button className="bg-cyan-500 shadow-lg shadow-cyan-500/50 text-white px-6 py-3 rounded-xl flex items-center gap-2">
             <FcCalendar /> Book Now
           </button>
-          <button className="bg-cyan-500 shadow-lg shadow-cyan-500/50 text-white px-6 py-3 rounded-xl flex items-center gap-2">
-            <FcPhone />
-            Call Now
-          </button>
+          <a href={`tel:1-781-367-6258`}>
+            <button className="bg-cyan-500 shadow-lg shadow-cyan-500/50 text-white px-6 py-3 rounded-xl flex items-center gap-2">
+              <FcPhone />
+              Call Now
+            </button>
+          </a>
         </div>
         <div className=" flex items-center justify-center text-3xl mt-16 font-mono font-bold">
           <Image
