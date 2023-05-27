@@ -12,6 +12,7 @@ import {
   FcPhone,
   FcOk,
 } from "react-icons/fc";
+import { FiDollarSign } from "react-icons/fi";
 
 import "swiper/css/pagination";
 const inter = Inter({ subsets: ["latin"] });
@@ -141,7 +142,40 @@ export default function Home() {
           />
           Cleaning Plans
         </div>
-
+        <div className="flex flex-wrap justify-center items-center gap-5 mt-6">
+          <div className="flip-card ">
+            <div className="flip-card-inner rounded-xl">
+              <div className="flip-card-front rounded-xl bg-cyan-500 text-white">
+                <div className="flex h-[80%] justify-between flex-col">
+                  <div className="text-2xl border-b font-mono font-bold text-black border-gray-400 p-4">
+                    Standard
+                  </div>
+                  <div className="text-6xl flex items-center justify-center mt-4 font-medium ">
+                    90
+                    <FiDollarSign />
+                  </div>
+                  <div className="text-yellow-400 bg-green-400 w-fit py-2 px-5 rounded-md mx-auto">
+                    details...
+                  </div>
+                </div>
+              </div>
+              <div className="flip-card-back flex flex-col justify-around rounded-xl">
+                <div className="text-start w-[80%] mx-auto">
+                  <p>2 hours of cleaning</p>
+                  <p>kitchen + floor + 1 room</p>
+                  <p>big-house: 1000sq</p>
+                </div>
+                <div className="w-full ">
+                  <button className="bg-cyan-500 shadow-lg text-center shadow-cyan-500/50 text-white px-6 py-3 rounded-xl w-fit ">
+                    <div className="flex items-center gap-2">
+                      <FcCalendar /> Book Now
+                    </div>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <div className="h-[500px]"></div>
       </main>
 
