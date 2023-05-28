@@ -11,21 +11,19 @@ import {
   FcCalendar,
   FcPhone,
   FcOk,
-  FcClock,
-  FcDepartment,
-  FcReuse,
-  FcInfo,
+  FcQuestions,
+  FcHome,
 } from "react-icons/fc";
-import { FiDollarSign } from "react-icons/fi";
+import { MdCleaningServices } from "react-icons/md";
 
-import "swiper/css/pagination";
+import Package from "@/components/Package";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   return (
     <>
       <Header />
-      <div></div>
+
       <main className="w-[80%] h-[300px] md:h-[500px] mx-auto mt-4 ">
         <div className="flex items-center justify-center text-md md:text-2xl font-serif font-bold">
           <Image
@@ -73,7 +71,8 @@ export default function Home() {
             />
           </SwiperSlide>
         </Swiper>
-        <div className="font-bold text-md md:text-xl text-center mt-2">
+
+        <div className="font-bold text-sm md:text-xl text-center mt-2">
           We Will Clean Your House As Soon As Possible
         </div>
         <div className="flex gap-3 justify-center mt-3">
@@ -81,13 +80,13 @@ export default function Home() {
             <FcCalendar /> Book Now
           </button>
           <a href={`tel:1-781-367-6258`}>
-            <button className="bg-cyan-500 shadow-lg shadow-cyan-500/50 text-white px-6 py-3 rounded-xl w-fit flex items-center gap-2">
+            <button className="bg-cyan-500 text-sm md: shadow-lg shadow-cyan-500/50 text-white px-6 py-3 rounded-xl w-fit flex items-center gap-2">
               <FcPhone />
               Call Now
             </button>
           </a>
         </div>
-        <div className=" flex items-center justify-center text-3xl mt-16 font-mono font-bold">
+        <div className=" flex items-center text-xl md:text-4xl justify-center  mt-16 font-mono font-bold">
           <Image
             alt="alt"
             className="w-[50px] md:w-[100px]"
@@ -136,7 +135,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className=" flex items-center gap-2 justify-center text-3xl mt-16 font-mono font-bold">
+        <div className=" flex items-center text-xl gap-2 justify-center md:text-4xl mt-16 font-mono font-bold">
           <Image
             alt="alt"
             className="w-[50px] md:w-[50px]"
@@ -147,50 +146,74 @@ export default function Home() {
           Cleaning Plans
         </div>
         <div className="flex flex-wrap justify-center items-center gap-5 mt-6">
+          <Package title="Standard" price={90} houre="1.5 / 2" />
+
+          <Package title="Deep" price={180} houre="2 / 3" />
+
+          <Package title="Move In/Out" price={260} houre="3" />
+
           <div className="flip-card ">
-            <div className="flip-card-inner rounded-xl">
+            <div className="w-full h-full text-center rounded-xl">
               <div className="flip-card-front rounded-xl bg-cyan-500 text-white">
                 <div className="flex h-[90%] justify-between flex-col">
                   <div className="text-2xl border-b font-mono font-bold text-black border-gray-400 p-4">
-                    Standard
+                    OFFICE
                   </div>
-                  <div>Starting from:</div>
-                  <div className="text-6xl flex items-center justify-center mt-4 font-medium ">
-                    90
-                    <FiDollarSign />
+
+                  <div className="text-2xl flex items-center justify-center mt-4 font-medium ">
+                    With Appointment
                   </div>
-                  <div className="text-white cursor-pointer sm:mt-4 bg-green-400 w-fit  flex items-center gap-1  py-2 px-5 rounded-md mx-auto">
-                    <FcInfo />
-                    Details
+                  <div className="text-white cursor-pointer sm:mt-4 bg-green-400    py-2 px-5 rounded-md mx-auto">
+                    <a
+                      href={`tel:1-781-367-6258`}
+                      className=" flex items-center gap-1 w-fit"
+                    >
+                      <FcPhone />
+                      Call Us
+                    </a>
                   </div>
-                </div>
-              </div>
-              <div className="flip-card-back flex flex-col justify-around rounded-xl">
-                <div className="text-start w-[80%] mx-auto h-[150px] flex flex-col justify-around">
-                  <p className="flex items-center gap-1">
-                    <FcClock />
-                    1.5 / 2 hours Session
-                  </p>
-                  <p className="flex items-center gap-1">
-                    <FcReuse />
-                    kitchen + floor + 1 room
-                  </p>
-                  <p className="flex items-center gap-1">
-                    <FcDepartment />
-                    big-house: 1000sq
-                  </p>
-                </div>
-                <div className="w-full ">
-                  <button className="bg-cyan-500  text-center text-white px-6 py-3 rounded-xl w-fit ">
-                    <div className="flex items-center gap-2">
-                      <FcCalendar /> Book Now
-                    </div>
-                  </button>
                 </div>
               </div>
             </div>
           </div>
         </div>
+        <div className="text-4xl font-bold flex font-mono justify-center items-center mt-16">
+          <FcQuestions />
+          How it works
+        </div>
+        <div className="flex gap-16 text-6xl text-center flex-wrap justify-center mt-8">
+          <div className="w-1/4">
+            <FcHome className="mx-auto" />
+            <div className="text-green-500 text-xl mt-4">First Step</div>
+            <div className="text-sm">
+              Select size of home and what need to clean
+            </div>
+          </div>
+          <div className="w-1/4">
+            <MdCleaningServices className="mx-auto" />
+            <div className="text-green-500 text-xl mt-4">Second Step</div>
+            <div className="text-sm">
+              Select the level of cleanliness your home is in
+            </div>
+          </div>
+          <div className="w-1/4">
+            <FcCalendar className="mx-auto" />
+            <div className="text-green-500 text-xl mt-4">Third Step</div>
+            <div className="text-sm">
+              Schedule your preferred time or ask us
+            </div>
+          </div>
+        </div>
+        <div className="text-4xl font-bold flex font-mono justify-center items-center mt-16">
+          FAQ
+        </div>
+        <div>
+          Can I Cancel The Booking ?
+          <div>
+            if you cancel before 24 hour
+          </div>
+        </div>
+
         <div className="h-[500px]"></div>
       </main>
 
