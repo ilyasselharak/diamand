@@ -14,12 +14,16 @@ import {
   FcQuestions,
   FcHome,
 } from "react-icons/fc";
+import { useState } from "react";
+import { AiFillCaretDown } from "react-icons/ai";
 import { MdCleaningServices } from "react-icons/md";
 
 import Package from "@/components/Package";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  const [refund, setRefund] = useState(false);
+  const [pet, setPet] = useState(false);
   return (
     <>
       <Header />
@@ -76,11 +80,11 @@ export default function Home() {
           We Will Clean Your House As Soon As Possible
         </div>
         <div className="flex gap-3 justify-center mt-3">
-          <button className="bg-cyan-500 shadow-lg shadow-cyan-500/50 text-white px-6 py-3 rounded-xl w-fit flex items-center gap-2">
+          <button className="bg-[#a1be3a] shadow-lg shadow-cyan-500/50 text-white px-6 py-3 rounded-xl w-fit flex items-center gap-2">
             <FcCalendar /> Book Now
           </button>
           <a href={`tel:1-781-367-6258`}>
-            <button className="bg-cyan-500 text-sm md: shadow-lg shadow-cyan-500/50 text-white px-6 py-3 rounded-xl w-fit flex items-center gap-2">
+            <button className="bg-[#a1be3a] text-sm md: shadow-lg shadow-cyan-500/50 text-white px-6 py-3 rounded-xl w-fit flex items-center gap-2">
               <FcPhone />
               Call Now
             </button>
@@ -182,14 +186,14 @@ export default function Home() {
           How it works
         </div>
         <div className="flex gap-16 text-6xl text-center flex-wrap justify-center mt-8">
-          <div className="w-1/4">
+          <div className="md:w-1/4 w-2/4">
             <FcHome className="mx-auto" />
             <div className="text-green-500 text-xl mt-4">First Step</div>
             <div className="text-sm">
               Select size of home and what need to clean
             </div>
           </div>
-          <div className="w-1/4">
+          <div className="md:w-1/4 w-2/4">
             <MdCleaningServices className="mx-auto" />
             <div className="text-green-500 text-xl mt-4">Second Step</div>
             <div className="text-sm">
@@ -207,8 +211,51 @@ export default function Home() {
         <div className="text-4xl font-bold flex font-mono justify-center items-center mt-16">
           FAQ
         </div>
-        <div>
-          Can I Cancel The Booking ?<div>if you cancel before 24 hour</div>
+        <div className="mt-8 flex flex-col gap-3">
+          <div
+            onClick={() => {
+              setPet(!pet);
+            }}
+            className="bg-white shadow-myShadow p-4 font-medium flex justify-between items-center"
+          >
+            I have a pet can i leave it in home ?
+            <AiFillCaretDown />
+          </div>
+          <div
+            className={`${
+              pet ? "" : "hidden"
+            } bg-white shadow-lg p-4 flex flex-col gap-2`}
+          >
+            <p>
+              we recommend to put it somewhere like a separate room while we are
+              there
+            </p>
+            <p>
+              the pit make sound nice because it is a part of the family but we
+              have some don't like noise or may want to play.
+            </p>
+          </div>
+          <div
+            onClick={() => {
+              setRefund(!refund);
+            }}
+            className="bg-white shadow-myShadow p-4 font-medium flex justify-between items-center"
+          >
+            Can I Cancel The Booking and Refund Money ?
+            <AiFillCaretDown />
+          </div>
+          <div
+            className={`${
+              refund ? "" : "hidden"
+            } bg-white shadow-lg p-4 flex flex-col gap-2`}
+          >
+            <p>if 24h before appointment . non Refundable</p>
+            <p>
+              if 48h before appointment you can get a credit so you can used
+              next time
+            </p>
+            <p>if Before 48H you can get full refund back</p>
+          </div>
         </div>
 
         <div className="h-[500px]"></div>
