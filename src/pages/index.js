@@ -177,7 +177,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="text-4xl font-bold flex font-mono justify-center items-center mt-16">
+        <div className=" text-xl md:text-4xl font-bold flex font-mono justify-center items-center mt-16">
           <FcQuestions />
           How it works
         </div>
@@ -196,7 +196,7 @@ export default function Home() {
               Select the level of cleanliness your home is in
             </div>
           </div>
-          <div className="w-1/4">
+          <div className="md:w-1/4 w-2/4">
             <FcCalendar className="mx-auto" />
             <div className="text-green-500 text-xl mt-4">Third Step</div>
             <div className="text-sm">
@@ -208,10 +208,7 @@ export default function Home() {
           FAQ
         </div>
         <div>
-          Can I Cancel The Booking ?
-          <div>
-            if you cancel before 24 hour
-          </div>
+          Can I Cancel The Booking ?<div>if you cancel before 24 hour</div>
         </div>
 
         <div className="h-[500px]"></div>
