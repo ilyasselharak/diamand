@@ -17,7 +17,7 @@ function Header() {
               className="w-[200px] h-[90px] md:w-[250px] md:h-[100px]"
               width={250}
               height={150}
-              alt={"logo"}
+              alt="logo"
             />
           </div>
           <div className=" text-xl flex-wrap gap-6  justify-center md:flex hidden text-2xl items-center">
