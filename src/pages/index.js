@@ -5,18 +5,13 @@ import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Pagination } from "swiper";
-import {
-  FcConferenceCall,
-  FcBriefcase,
-  FcCalendar,
-  FcPhone,
-  FcOk,
-  FcQuestions,
-  FcHome,
-} from "react-icons/fc";
+import { FcCalendar, FcPhone, FcQuestions, FcHome } from "react-icons/fc";
+import { BiFridge, BiCabinet } from "react-icons/bi";
 import { useState } from "react";
 import { AiFillCaretDown } from "react-icons/ai";
 import { MdCleaningServices } from "react-icons/md";
+import { TbWindow, TbMicrowave, TbStairs } from "react-icons/tb";
+import { GiBrickWall, GiWashingMachine, GiMirrorMirror } from "react-icons/gi";
 
 import Package from "@/components/Package";
 const inter = Inter({ subsets: ["latin"] });
@@ -98,33 +93,45 @@ export default function Home() {
             height={100}
             src={"/gemEx.gif"}
           />
-          Our Experience
-        </div>
-        <div className="flex flex-wrap font-bold  gap-3 md:gap-16 mt-12 text-2xl md:text-6xl justify-center">
-          <div className=" w-[250px] md:w-[350px] flex gap-2 flex-col items-center bg-cyan-100 p-8">
-            <FcConferenceCall />
-            <div className=" text-green-500 font-bold">30</div>
-            <div className="text-sm md:text-xl md:mt-6 text-gray-700 font-mono">
-              Our Customers
-            </div>
-          </div>
-          <div className="w-[250px]  md:w-[350px] flex gap-2 flex-col items-center bg-cyan-100 p-8">
-            <FcBriefcase />
-            <div className=" text-green-500 font-bold">4 Years</div>
-            <div className="text-sm md:text-xl md:mt-6 text-gray-700 font-mono">
-              Years Of Work
-            </div>
-          </div>
-          <div className="w-[250px]  md:w-[350px] flex gap-2 flex-col items-center bg-cyan-100 p-8">
-            <FcOk />
-            <div className=" text-green-500 font-bold">99%</div>
-            <div className="text-sm md:text-xl md:mt-6 text-gray-700 font-mono">
-              Customer Satisfaction
-            </div>
+          <div>
+            {" "}
+            <span className="text-green-400">OUR</span> SERVICES
           </div>
         </div>
-        <div className="mt-8 grid grid-cols-1 md:grid-cols-2">
-          <div className="flex justify-center">
+        <div className="grid md:grid-cols-4 grid-cols-2 gap-3 md:gap-6 mt-16">
+          <span className="flex  items-center  md:text-2xl gap-1">
+            <BiFridge /> <span className="text-green-500">Clean</span>
+            Fridge
+          </span>
+          <span className="flex items-center  md:text-2xl gap-1">
+            <TbWindow /> <span className="text-green-500">Clean</span> Windows
+          </span>
+          <span className="flex items-center md:text-2xl gap-1">
+            <GiBrickWall /> <span className="text-green-500">Clean</span> Walls
+          </span>
+          <span className="flex items-center  md:text-2xl gap-1">
+            <GiWashingMachine /> <span className="text-green-500">Clean</span>{" "}
+            Laundry
+          </span>
+          <span className="flex items-center  md:text-2xl gap-1">
+            <BiCabinet /> <span className="text-green-500">Clean</span> Cabinets
+          </span>
+          <span className="flex items-center  md:text-2xl gap-1">
+            <TbMicrowave /> <span className="text-green-500">Clean</span>
+            Microwave
+          </span>
+          <span className="flex items-center  md:text-2xl gap-1">
+            <TbStairs /> <span className="text-green-500">Clean</span> Stairs
+          </span>
+          <span className="flex items-center  md:text-2xl gap-1">
+            <GiMirrorMirror /> <span className="text-green-500">Clean</span>{" "}
+            Mirror
+          </span>
+        </div>
+
+        <div className="mt-16 grid grid-cols-1 md:grid-cols-2 relative ">
+          <Image src={"/slide.jpg"} fill priority className="z-[-1]" />
+          <div className="flex justify-center md:p-20 pt-4">
             <Image
               alt="alt"
               className="w-[200px] md:w-[300px] md:h-[400px] rounded-md"
@@ -133,23 +140,29 @@ export default function Home() {
               src={"/video.gif"}
             />
           </div>
-          <div className="md:text-start text-center">
+          <div className="md:text-start text-center md:p-20 p-4 text-md font-bold md:text-xl">
             KRYSTAL Cleaning Experience
-            <div></div>
+            <div className="p-0 font-normal">
+              <p className="mt-4">
+                Connecting communities and cultures with families and
+                individuals alike through one mission. Delivering the best
+                cleans and products to any home.
+              </p>
+              <p className="mt-4">
+                <span className="font-font">Community, Culture, Kindness.</span>{" "}
+                Our three core values match our one mission. Delivering the best
+                KRYSTAL cleaning specialists, creating the best KRYSTAL cleaning
+                products to every family and home, creating a service based
+                around honesty and reliability.
+              </p>
+            </div>
           </div>
         </div>
 
         <div className=" flex items-center text-xl gap-2 justify-center md:text-4xl mt-16 font-mono font-bold">
-          <Image
-            alt="alt"
-            className="w-[50px] md:w-[50px]"
-            width={100}
-            height={100}
-            src={"/Diamand.gif"}
-          />
           Cleaning Plans
         </div>
-        <div className="flex flex-wrap justify-center items-center gap-5 mt-6">
+        <div className="flex flex-wrap justify-center items-center gap-5 mt-16">
           <Package title="Standard" price={90} houre="1.5 / 2" />
 
           <Package title="Deep" price={180} houre="2 / 3" />
