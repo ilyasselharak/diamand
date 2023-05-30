@@ -135,7 +135,13 @@ export default function Home() {
           </div>
 
           <div className="mt-16 grid grid-cols-1 md:grid-cols-2 relative ">
-            <Image src={"/slide.jpg"} fill priority className="z-[-1]" />
+            <Image
+              alt={"slide backround"}
+              src={"/slide.jpg"}
+              fill
+              priority
+              className="z-[-1]"
+            />
             <div className="flex justify-center md:p-20 pt-4">
               <Image
                 alt="short video"
@@ -332,7 +338,7 @@ export default function Home() {
               By entering any information, you affirm you have read and agree to
               the Terms of Service and Privacy Policy.
             </p>
-            <button className="p-4 bg-green-400">Send</button>
+            <button className="p-4 bg-green-400 mb-20">Send</button>
           </div>
         </div>
         <HomeFoter />
