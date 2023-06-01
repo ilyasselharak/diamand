@@ -1,5 +1,7 @@
 import Extra from "@/components/Extra";
+import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import HomeFoter from "@/components/HomeFoter";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
@@ -111,7 +113,8 @@ export default function Type() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8 border-b border-gray-300 pb-8">
                 <input
                   type="date"
-                  className="border border-gray-500 p-2 rounded-md"
+                  placeholder="CHOOSE A DAY"
+                  className="border border-gray-500 w-full p-2 rounded-md"
                 />
                 <select
                   name="time"
@@ -125,7 +128,7 @@ export default function Type() {
                 </select>
               </div>
               <div className="uppercase text-xl mt-6">HOW OFTEN</div>
-              <p>
+              <p className="mt-3">
                 It's all about matching you with the perfect clean for your
                 home. Scheduling is flexible. Cancel or reschedule anytime.
                 Discounts are applied based on selection.
@@ -139,7 +142,7 @@ export default function Type() {
                 </select>
               </div>
               <div className="uppercase text-xl mt-6">Who you are</div>
-              <p>
+              <p className="mt-3">
                 This information will be used to contact you about your service.
               </p>
               <div className="flex flex-col gap-2 mt-8 border-b border-gray-300 pb-8">
@@ -177,7 +180,7 @@ export default function Type() {
                 </div>
               </div>
               <div className="uppercase text-xl mt-6">Address</div>
-              <div>Where would you like us to clean?</div>
+              <div className="mt-3">Where would you like us to clean?</div>
               <div className="flex flex-wrap gap-2 mt-8 border-b border-gray-300 pb-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-2 w-[100%]">
                   <input
@@ -267,8 +270,10 @@ export default function Type() {
             </div>
           </div>
         </div>
-        <div className="h-[400px]"></div>
+        <div className="h-[200px]"></div>
+        <HomeFoter />
       </main>
+      <Footer />
     </>
   );
 }
