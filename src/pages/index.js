@@ -338,7 +338,7 @@ export default function Home() {
               By entering any information, you affirm you have read and agree to
               the Terms of Service and Privacy Policy.
             </p>
-            <button className="p-4 bg-green-400 mb-20">Send</button>
+            <button className="p-4 bg-green-400 mb-20 rounded-md">Send</button>
           </div>
         </div>
         <HomeFoter />

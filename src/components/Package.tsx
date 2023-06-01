@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 import {
   FcCalendar,
@@ -60,11 +61,13 @@ export default function Package({ title, price, houre }: Props) {
               </div>
             </div>
             <div className="w-full ">
-              <button className="bg-cyan-500  text-center text-white px-6 py-3 rounded-xl w-fit ">
-                <div className="flex items-center gap-2">
-                  <FcCalendar /> Book Now
-                </div>
-              </button>
+              <Link href={`/Booking/${title}`}>
+                <button className="bg-cyan-500  text-center text-white px-6 py-3 rounded-xl w-fit ">
+                  <div className="flex items-center gap-2">
+                    <FcCalendar /> Book Now
+                  </div>
+                </button>
+              </Link>
             </div>
           </div>
         </div>
