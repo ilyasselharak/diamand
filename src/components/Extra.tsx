@@ -15,22 +15,28 @@ function Extra({ Dir, title }: Props) {
     }
   };
   return (
-    <div
-      className={`${
-        clicked ? "bg-green-400" : ""
-      } border border-green-300 p-4 rounded-md `}
-    >
-      <label htmlFor={title}>
-        <Image src={Dir} width={50} height={50} alt={title} />
+    <>
+      <label className="flex flex-col items-center" htmlFor={title}>
+        <div
+          className={`${
+            clicked ? "bg-green-400" : ""
+          } border border-green-300 p-4 cursor-pointer rounded-md `}
+        >
+          <Image src={Dir} width={50} height={50} alt={title} />
+        </div>
+        <span className={`${clicked ? "text-green-400" : ""} mt-2}`}>
+          {title}
+        </span>
       </label>
+
       <input
         type="checkbox"
         name={title}
         id={title}
         onClick={(event) => handleClick(event)}
-        className="hidden"
+        className="hidden "
       />
-    </div>
+    </>
   );
 }
 

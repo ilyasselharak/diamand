@@ -1,6 +1,5 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import { Inter } from "next/font/google";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -15,8 +14,6 @@ import { GiBrickWall, GiWashingMachine, GiMirrorMirror } from "react-icons/gi";
 
 import Package from "@/components/Package";
 import HomeFoter from "@/components/HomeFoter";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const [refund, setRefund] = useState(false);
@@ -50,7 +47,7 @@ export default function Home() {
           >
             <SwiperSlide>
               <Image
-                alt="homeclean"
+                alt="homeClean"
                 src={"/Toilet.jpg"}
                 className="rounded-2xl"
                 fill={true}
@@ -66,7 +63,7 @@ export default function Home() {
             </SwiperSlide>
             <SwiperSlide>
               <Image
-                alt="kithchen"
+                alt="kitchen"
                 className="rounded-2xl"
                 src={"/kitchen.jpg"}
                 fill={true}
@@ -136,7 +133,7 @@ export default function Home() {
 
           <div className="mt-16 grid grid-cols-1 md:grid-cols-2 relative ">
             <Image
-              alt={"slide backround"}
+              alt={"slide background"}
               src={"/slide.jpg"}
               fill
               priority
@@ -180,7 +177,7 @@ export default function Home() {
 
             <Package title="Deep" price={180} houre="2 / 3" />
 
-            <Package title="Move In/Out" price={260} houre="3" />
+            <Package title="Move-In-Out" price={260} houre="3" />
 
             <div className="flip-card ">
               <div className="w-full h-full text-center rounded-xl">
@@ -287,10 +284,7 @@ export default function Home() {
             Contact Us
           </div>
           <div className="flex gap-4 mx-auto mt-16 flex-col w-[90%] md:w-[66%]">
-            <div
-              className="w-full
-          "
-            >
+            <div className="w-full">
               <label>Name</label>
               <div>
                 <input
@@ -299,10 +293,7 @@ export default function Home() {
                 />
               </div>
             </div>
-            <div
-              className="w-full
-          "
-            >
+            <div className="w-full">
               <label>Email</label>
               <div>
                 <input
@@ -312,10 +303,7 @@ export default function Home() {
                 />
               </div>
             </div>
-            <div
-              className="w-full
-          "
-            >
+            <div className="w-full">
               <label>Phone</label>
               <div>
                 <input

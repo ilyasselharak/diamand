@@ -2,39 +2,46 @@ import Extra from "@/components/Extra";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import HomeFoter from "@/components/HomeFoter";
-import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
-import {
-  FcHome,
-  FcCallback,
-  FcPlanner,
-  FcCalendar,
-  FcProcess,
-} from "react-icons/fc";
+import { FcHome, FcCalendar, FcProcess } from "react-icons/fc";
 
 export default function Type() {
   const router = useRouter();
-  const [clicked, setClicked] = useState(false);
-  const handleClick = (event: any) => {
-    if (event.target.checked === true) {
-      setClicked(true);
-    } else {
-      setClicked(false);
-    }
-  };
+  const path = router.query.type;
+  const [repeat, setRepeat] = useState("One Time");
+  const [time, setTime] = useState("");
+  enum PRICE {
+    STANDARD = 90.0,
+    DEEP = 180.0,
+    MOVE_IN_OUT = 260.0,
+  }
+  const [date, setDate] = useState("Choose service Day...");
+  var price = 0;
+  switch (path) {
+    case "Standard":
+      price = PRICE.STANDARD;
+      break;
+    case "Deep":
+      price = PRICE.DEEP;
+      break;
+    case "Move-In-Out":
+      price = PRICE.MOVE_IN_OUT;
+      break;
+  }
+
   return (
     <>
       <Header />
       <main className="w-[90%] mx-auto">
-        <div className="mt-8 text-center font-bold text-4xl uppercase">
-          Make A Book as <span>{router.query.type}</span>
+        <div className="mt-8 text-center font-bold text-2xl md:text-4xl uppercase">
+          Make A Book as <span>{path}</span>
         </div>
         <div className="flex  gap-2 mt-16">
           <div className="md:w-[75%] border border-gray-200 p-5">
             <div className="text-2xl text-center border-b border-gray-300 pb-4">
               <div className="uppercase font-bold">Complete your booking</div>
-              <div className=" text-base text-gray-600 mt-2">
+              <div className="text-base text-gray-600 mt-2">
                 Great! Few details and we can complete your booking.
               </div>
             </div>
@@ -57,9 +64,9 @@ export default function Type() {
                 </div>
                 <div className="flex gap-4 w-full md:w-[60%] mx-auto">
                   <select className="text-center border py-2 md:p-3 rounded-md w-full border-gray-500">
-                    <option>1 kitchen</option>
-                    <option>2 kitchen</option>
-                    <option>3 kitchen</option>
+                    <option>1 Kitchen</option>
+                    <option>2 Kitchen</option>
+                    <option>3 Kitchen</option>
                   </select>
                   <select className="text-center border py-2 md:p-3 rounded-md w-full border-gray-500">
                     <option>Slightly Dirty</option>
@@ -113,18 +120,24 @@ export default function Type() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8 border-b border-gray-300 pb-8">
                 <input
                   type="date"
+                  onChange={(e) => {
+                    setDate(e.target.value);
+                  }}
                   placeholder="CHOOSE A DAY"
                   className="border border-gray-500 w-full p-2 rounded-md"
                 />
                 <select
                   name="time"
                   id="time"
+                  onChange={(e) => {
+                    setTime(e.target.value);
+                  }}
                   className="border border-gray-400 rounded-md p-2 "
                 >
-                  <option value="8-10">08:00AM - 10:00AM</option>
-                  <option value="10-12">10:00AM - 12:00PM</option>
-                  <option value="12-14">12:00AM - 14:00PM</option>
-                  <option value="14-16">14:00AM - 16:00PM</option>
+                  <option value="08:00AM - 10:00AM">08:00AM - 10:00AM</option>
+                  <option value="10:00AM - 12:00PM">10:00AM - 12:00PM</option>
+                  <option value="12:00AM - 14:00PM">12:00AM - 14:00PM</option>
+                  <option value="14:00AM - 16:00PM">14:00AM - 16:00PM</option>
                 </select>
               </div>
               <div className="uppercase text-xl mt-6">HOW OFTEN</div>
@@ -134,11 +147,16 @@ export default function Type() {
                 Discounts are applied based on selection.
               </p>
               <div className="text-center  border-b border-gray-300 pb-8">
-                <select className="border p-3 mt-6 text-center rounded-md w-[50%] border-gray-500">
-                  <option>One Time</option>
-                  <option>Weekly</option>
-                  <option>Biweekly</option>
-                  <option>Monthly</option>
+                <select
+                  onChange={(e) => {
+                    setRepeat(e.target.value);
+                  }}
+                  className="border p-3 mt-6 text-center rounded-md w-[50%] border-gray-500"
+                >
+                  <option value={"One Time"}>One Time</option>
+                  <option value={"Weekly"}>Weekly</option>
+                  <option value={"Biweekly"}>Biweekly</option>
+                  <option value={"Monthly"}>Monthly</option>
                 </select>
               </div>
               <div className="uppercase text-xl mt-6">Who you are</div>
@@ -200,11 +218,59 @@ export default function Type() {
                     className="border border-gray-400 rounded-md p-2"
                     placeholder="City*"
                   />
-                  <select
-                    name=""
-                    className="rounded-md border border-gray-400"
-                    id=""
-                  ></select>
+                  <select className="border border-gray-400 rounded-md">
+                    <option value="AL">Alabama</option>
+                    <option value="AK">Alaska</option>
+                    <option value="AZ">Arizona</option>
+                    <option value="AR">Arkansas</option>
+                    <option value="CA">California</option>
+                    <option value="CO">Colorado</option>
+                    <option value="CT">Connecticut</option>
+                    <option value="DE">Delaware</option>
+                    <option value="DC">District Of Columbia</option>
+                    <option value="FL">Florida</option>
+                    <option value="GA">Georgia</option>
+                    <option value="HI">Hawaii</option>
+                    <option value="ID">Idaho</option>
+                    <option value="IL">Illinois</option>
+                    <option value="IN">Indiana</option>
+                    <option value="IA">Iowa</option>
+                    <option value="KS">Kansas</option>
+                    <option value="KY">Kentucky</option>
+                    <option value="LA">Louisiana</option>
+                    <option value="ME">Maine</option>
+                    <option value="MD">Maryland</option>
+                    <option value="MA">Massachusetts</option>
+                    <option value="MI">Michigan</option>
+                    <option value="MN">Minnesota</option>
+                    <option value="MS">Mississippi</option>
+                    <option value="MO">Missouri</option>
+                    <option value="MT">Montana</option>
+                    <option value="NE">Nebraska</option>
+                    <option value="NV">Nevada</option>
+                    <option value="NH">New Hampshire</option>
+                    <option value="NJ">New Jersey</option>
+                    <option value="NM">New Mexico</option>
+                    <option value="NY">New York</option>
+                    <option value="NC">North Carolina</option>
+                    <option value="ND">North Dakota</option>
+                    <option value="OH">Ohio</option>
+                    <option value="OK">Oklahoma</option>
+                    <option value="OR">Oregon</option>
+                    <option value="PA">Pennsylvania</option>
+                    <option value="RI">Rhode Island</option>
+                    <option value="SC">South Carolina</option>
+                    <option value="SD">South Dakota</option>
+                    <option value="TN">Tennessee</option>
+                    <option value="TX">Texas</option>
+                    <option value="UT">Utah</option>
+                    <option value="VT">Vermont</option>
+                    <option value="VA">Virginia</option>
+                    <option value="WA">Washington</option>
+                    <option value="WV">West Virginia</option>
+                    <option value="WI">Wisconsin</option>
+                    <option value="WY">Wyoming</option>
+                  </select>
                   <input
                     type="text"
                     className="border border-gray-400 rounded-md p-2"
@@ -257,15 +323,18 @@ export default function Type() {
               </div>
               <div className="mt-4 flex items-center gap-4">
                 <FcCalendar className="text-4xl" />
-                <div>24/05/2023 / 8:00AM-10:00AM</div>
+                <div>
+                  {date}
+                  {date !== "Choose service Day..." ? " / " + time : ""}
+                </div>
               </div>
               <div className="mt-4 flex gap-4 items-center">
                 <FcProcess className="text-4xl" />
-                <div>One Time</div>
+                <div>{repeat}</div>
               </div>
               <div className="flex justify-between mt-14 border-t border-gray-600 pt-8">
                 <div className="uppercase font-bold">total</div>
-                <div className="text-xl">90.00$</div>
+                <div className="text-xl">{price}$</div>
               </div>
             </div>
           </div>
