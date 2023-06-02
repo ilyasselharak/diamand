@@ -60,7 +60,7 @@ export default function Type() {
     email: z.string().min(1, { message: "Email is required" }).email({
       message: "Must be a valid email",
     }),
-    phone: z.number().min(5, { message: "phone must be at least 6 numbers" }),
+    phone: z.string().min(5, { message: "phone must be at least 6 numbers" }),
     // address: z.string().min(1, { message: "Address is required" }),
     // city: z.string().min(1, { message: "city is required" }),
   });
