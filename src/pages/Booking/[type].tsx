@@ -1,16 +1,38 @@
 import Extra from "@/components/Extra";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import { z } from "Zod";
 import HomeFoter from "@/components/HomeFoter";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { FcHome, FcCalendar, FcProcess } from "react-icons/fc";
 
+type MyObject = {
+  title: string;
+  isSelected: boolean;
+  price: number;
+};
 export default function Type() {
+  const [data, setData] = useState<string[]>([]);
   const router = useRouter();
   const path = router.query.type;
   const [repeat, setRepeat] = useState("One Time");
   const [time, setTime] = useState("");
+  const [bedRoom, setBedRoom] = useState(1);
+  const [bathRoom, setBathRoom] = useState(1);
+  const [kitchen, setKitchen] = useState(1);
+  const [total, setTotal] = useState(0);
+  const handleObjectReturn = (obj: MyObject) => {
+    if (obj.isSelected == true) {
+      setData([...data, obj.title]);
+      setTotal(total + obj.price);
+    } else if (obj.isSelected == false) {
+      setTotal(total - obj.price);
+      setData(data.filter((item) => item !== obj.title));
+    }
+  };
   enum PRICE {
     STANDARD = 90.0,
     DEEP = 180.0,
@@ -30,6 +52,28 @@ export default function Type() {
       break;
   }
 
+  type ValidationSchema = z.infer<typeof validationSchema>;
+  const validationSchema = z.object({
+    fname: z.string().min(1, { message: "First Name is required" }),
+    lname: z.string().min(1, { message: "Last Name is required" }),
+    email: z.string().min(1, { message: "Email is required" }).email({
+      message: "Must be a valid email",
+    }),
+    phone: z.number().min(5, { message: "phone must be at least 6 numbers" }),
+    // address: z.string().min(1, { message: "Address is required" }),
+    // city: z.string().min(1, { message: "city is required" }),
+  });
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<ValidationSchema>({
+    mode: "onBlur",
+    resolver: zodResolver(validationSchema),
+  });
+  const onSubmit: SubmitHandler<ValidationSchema> = (data) => {
+    return data;
+  };
   return (
     <>
       <Header />
@@ -38,7 +82,10 @@ export default function Type() {
           Make A Book as <span>{path}</span>
         </div>
         <div className="flex  gap-2 mt-16">
-          <div className="md:w-[75%] border border-gray-200 p-5">
+          <form
+            className="md:w-[75%] border border-gray-200 p-5"
+            onSubmit={handleSubmit(onSubmit)}
+          >
             <div className="text-2xl text-center border-b border-gray-300 pb-4">
               <div className="uppercase font-bold">Complete your booking</div>
               <div className="text-base text-gray-600 mt-2">
@@ -51,22 +98,37 @@ export default function Type() {
               </div>
               <div className="flex flex-col gap-5 border-b border-gray-300 pb-8">
                 <div className="flex gap-4 w-full md:w-[60%] mx-auto mt-4">
-                  <select className="text-center border py-2 md:p-3 rounded-md w-full border-gray-500">
-                    <option>1 Bedroom</option>
-                    <option>2 Bedroom</option>
-                    <option>3 Bedroom</option>
+                  <select
+                    onChange={(e) => {
+                      setBedRoom(Number(e.target.value));
+                    }}
+                    className="text-center border py-2 md:p-3 rounded-md w-full border-gray-500"
+                  >
+                    <option value={1}>1 Bedroom</option>
+                    <option value={2}>2 Bedroom</option>
+                    <option value={3}>3 Bedroom</option>
                   </select>
-                  <select className="text-center border py-2 md:p-3 rounded-md  w-full border-gray-500">
-                    <option>1 Bathroom</option>
-                    <option>2 Bathroom</option>
-                    <option>3 Bathroom</option>
+                  <select
+                    onChange={(e) => {
+                      setBathRoom(Number(e.target.value));
+                    }}
+                    className="text-center border py-2 md:p-3 rounded-md  w-full border-gray-500"
+                  >
+                    <option value={1}>1 Bathroom</option>
+                    <option value={2}>2 Bathroom</option>
+                    <option value={3}>3 Bathroom</option>
                   </select>
                 </div>
                 <div className="flex gap-4 w-full md:w-[60%] mx-auto">
-                  <select className="text-center border py-2 md:p-3 rounded-md w-full border-gray-500">
-                    <option>1 Kitchen</option>
-                    <option>2 Kitchen</option>
-                    <option>3 Kitchen</option>
+                  <select
+                    onChange={(e) => {
+                      setKitchen(Number(e.target.value));
+                    }}
+                    className="text-center border py-2 md:p-3 rounded-md w-full border-gray-500"
+                  >
+                    <option value={1}>1 Kitchen</option>
+                    <option value={2}>2 Kitchen</option>
+                    <option value={3}>3 Kitchen</option>
                   </select>
                   <select className="text-center border py-2 md:p-3 rounded-md w-full border-gray-500">
                     <option>Slightly Dirty</option>
@@ -79,29 +141,85 @@ export default function Type() {
                 <div className="uppercase text-xl mt-6">add Extras</div>
                 <div className="flex gap-4 flex-wrap justify-center mt-8">
                   <div>
-                    <Extra Dir="/assets/oven.svg" title="oven" />
+                    <Extra
+                      onClick={handleObjectReturn}
+                      Dir="/assets/oven.svg"
+                      title="oven"
+                      price={15}
+                    />
                   </div>
                   <div>
-                    <Extra Dir="/assets/dishwasher.svg" title="dishwasher" />
+                    <Extra
+                      onClick={handleObjectReturn}
+                      Dir="/assets/dishwasher.svg"
+                      title="dishwasher"
+                      price={15}
+                    />
                   </div>
                   <div>
-                    <Extra Dir="/assets/wall.svg" title="wall" />
+                    <Extra
+                      onClick={handleObjectReturn}
+                      Dir="/assets/wall.svg"
+                      title="wall"
+                      price={15}
+                    />
                   </div>
                   <div>
-                    <Extra Dir="/assets/blind.svg" title="blind" />
+                    <Extra
+                      onClick={handleObjectReturn}
+                      Dir="/assets/blind.svg"
+                      title="blind"
+                      price={15}
+                    />
                   </div>
 
                   <div>
-                    <Extra Dir="/assets/fridge.svg" title="fridge" />
+                    <Extra
+                      onClick={handleObjectReturn}
+                      Dir="/assets/fridge.svg"
+                      title="fridge"
+                      price={15}
+                    />
                   </div>
                   <div>
-                    <Extra Dir="/assets/microwave.svg" title="microwave" />
+                    <Extra
+                      onClick={handleObjectReturn}
+                      Dir="/assets/microwave.svg"
+                      title="microwave"
+                      price={15}
+                    />
                   </div>
                   <div>
-                    <Extra Dir="/assets/window.svg" title="window" />
+                    <Extra
+                      onClick={handleObjectReturn}
+                      Dir="/assets/window.svg"
+                      title="window"
+                      price={15}
+                    />
                   </div>
                   <div>
-                    <Extra Dir="/assets/dryer.svg" title="dryer" />
+                    <Extra
+                      onClick={handleObjectReturn}
+                      Dir="/assets/dryer.svg"
+                      title="dryer"
+                      price={15}
+                    />
+                  </div>
+                  <div>
+                    <Extra
+                      onClick={handleObjectReturn}
+                      Dir="/assets/cabinet.svg"
+                      title="cabinet"
+                      price={15}
+                    />
+                  </div>
+                  <div>
+                    <Extra
+                      onClick={handleObjectReturn}
+                      Dir="/assets/washing.svg"
+                      title="washing"
+                      price={15}
+                    />
                   </div>
                 </div>
               </div>
@@ -168,32 +286,60 @@ export default function Type() {
                   <div className="md:w-[40%]">
                     <input
                       type="text"
+                      {...register("fname")}
                       className="p-2 border border-gray-500 rounded-md w-full"
                       placeholder="Your First Name"
                     />
+                    {errors.fname && (
+                      <p className="text-xs italic text-red-500 mt-2">
+                        {" "}
+                        {errors.fname?.message}
+                      </p>
+                    )}
                   </div>
                   <div className="md:w-[40%]">
                     <input
                       type="text"
+                      {...register("lname")}
                       className="p-2 border border-gray-500 rounded-md w-full"
                       placeholder="Your Last Name"
                     />
+                    {errors.lname && (
+                      <p className="text-xs italic text-red-500 mt-2">
+                        {" "}
+                        {errors.lname?.message}
+                      </p>
+                    )}
                   </div>
                 </div>
                 <div className="flex justify-center gap-2">
                   <div className="md:w-[40%]">
                     <input
                       type="email"
+                      {...register("email")}
                       className="p-2 border border-gray-500 rounded-md w-full"
                       placeholder="Your Email"
                     />
+                    {errors.email && (
+                      <p className="text-xs italic text-red-500 mt-2">
+                        {" "}
+                        {errors.email?.message}
+                      </p>
+                    )}
                   </div>
                   <div className="md:w-[40%]">
                     <input
                       type="tel"
+                      {...register("phone")}
                       className="p-2 border border-gray-500 rounded-md w-full"
                       placeholder="Your Phone"
                     />
+                    {errors.phone && (
+                      <p className="text-xs italic text-red-500 mt-2">
+                        {" "}
+                        {errors.phone?.message}
+                      </p>
+                    )}
                   </div>
                 </div>
               </div>
@@ -299,10 +445,13 @@ export default function Type() {
                 <span>I agree to the Terms of Service and Privacy Policy.</span>
               </div>
             </div>
-            <button className="p-4 text-xl text-white font-bold bg-green-400 mb-20 rounded-md w-full mt-14">
+            <button
+              type="submit"
+              className="p-4 text-xl text-white font-bold bg-green-400 mb-20 rounded-md w-full mt-14"
+            >
               Book Now
             </button>
-          </div>
+          </form>
           <div className="hidden md:block  ">
             <div className="fixed w-[25%]  border rounded-lg p-4 border-gray-500">
               <div className="border-b border-gray-300 text-center text-xl pb-4 uppercase">
@@ -312,14 +461,28 @@ export default function Type() {
                 <div className="flex gap-6">
                   <FcHome className="text-4xl" />
                   <div>
-                    1 Bedroom{" "}
+                    {bedRoom} Bedroom{" "}
                     <ul className="ml-4 list-disc ">
-                      <li>1 kitchen</li>
-                      <li>1 bathroom</li>
+                      <li>{kitchen} kitchen</li>
+                      <li>{bathRoom} bathroom</li>
                     </ul>
+                    {data.map((item) => {
+                      return <p className="uppercase mt-4">+ Clean {item}</p>;
+                    })}
                   </div>
                 </div>
-                <div>90.00$</div>
+                <div>
+                  {
+                    (price =
+                      bedRoom * 15 +
+                      bathRoom * 20 +
+                      kitchen * 40 +
+                      price -
+                      75 +
+                      total)
+                  }
+                  $
+                </div>
               </div>
               <div className="mt-4 flex items-center gap-4">
                 <FcCalendar className="text-4xl" />
