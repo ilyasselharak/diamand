@@ -1,7 +1,7 @@
 import Extra from "@/components/Extra";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import { z } from "Zod";
+import { z } from "zod";
 import HomeFoter from "@/components/HomeFoter";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
