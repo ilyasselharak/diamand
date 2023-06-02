@@ -30,10 +30,7 @@ function Header() {
               <FcHome />
               Home
             </Link>
-            <Link
-              href={"/Booking/Standard"}
-              className="flex gap-1 items-center"
-            >
+            <Link href={"Booking/Standard"} className="flex gap-1 items-center">
               <FcPlanner />
               Book
             </Link>

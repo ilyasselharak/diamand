@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 import { BsFacebook, BsInstagram } from "react-icons/bs";
 
@@ -17,12 +18,18 @@ export default function HomeFoter() {
           <div className="flex gap-4 font-bold text-gray-700 ml-4">
             <span className="hover:underline hover:text-xl">Book Now</span>
             <span className="hover:underline hover:text-xl">Call us</span>
-            <span className="hover:underline hover:text-xl">
+            <Link
+              href={"/Refund"}
+              className="hover:underline hover:text-xl cursor-pointer"
+            >
               Cancellation Policy
-            </span>
-            <span className="hover:underline hover:text-xl">
+            </Link>
+            <Link
+              href={"/privacy-policy"}
+              className="hover:underline hover:text-xl cursor-pointer"
+            >
               Privacy Policy
-            </span>
+            </Link>
           </div>
         </div>
         <div className="text-4xl flex gap-3">

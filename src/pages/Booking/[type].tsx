@@ -8,6 +8,7 @@ import React, { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FcHome, FcCalendar, FcProcess } from "react-icons/fc";
+import Link from "next/link";
 
 type MyObject = {
   title: string;
@@ -77,7 +78,7 @@ export default function Type() {
   return (
     <>
       <Header />
-      <main className="w-[90%] mx-auto">
+      <main className="w-[95%] mx-auto">
         <div className="mt-8 text-center font-bold text-2xl md:text-4xl uppercase">
           Make A Book as <span>{path}</span>
         </div>
@@ -438,7 +439,11 @@ export default function Type() {
               </div>
               <div className="mt-8">
                 By clicking the Book Now button you are agreeing to our Terms of
-                Service and Privacy Policy.
+                Service and{" "}
+                <Link href="/privacy-policy" className="cursor-pointer">
+                  Privacy Policy
+                </Link>
+                .
               </div>
               <div className="flex gap-4 mt-4">
                 <input type="checkbox" />
@@ -452,8 +457,8 @@ export default function Type() {
               Book Now
             </button>
           </form>
-          <div className="hidden md:block  ">
-            <div className="fixed w-[25%]  border rounded-lg p-4 border-gray-500">
+          <div className="hidden md:block relative w-[30%]">
+            <div className="sticky top-0 w-full border rounded-lg p-4 border-gray-500">
               <div className="border-b border-gray-300 text-center text-xl pb-4 uppercase">
                 Booking Summary
               </div>
