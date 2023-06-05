@@ -14,6 +14,7 @@ import { GiBrickWall, GiWashingMachine, GiMirrorMirror } from "react-icons/gi";
 
 import Package from "@/components/Package";
 import HomeFoter from "@/components/HomeFoter";
+import Script from "next/script";
 
 export default function Home() {
   const [refund, setRefund] = useState(false);
@@ -22,16 +23,9 @@ export default function Home() {
     <>
       <Header />
 
-      <main className="mt-4">
+      <main className="mt-4 font-mono">
         <div className="w-[80%] mx-auto">
-          <div className="flex items-center justify-center text-md md:text-2xl font-serif font-bold">
-            <Image
-              alt="gem"
-              className="w-[50px] md:w-[100px]"
-              width={100}
-              height={100}
-              src={"/gem.gif"}
-            />
+          <div className="text-center text-md md:text-2xl font-serif font-bold">
             <span>WELCOME TO KRYSTAL CLEANING SERVICES</span>
           </div>
 
@@ -43,7 +37,7 @@ export default function Home() {
               clickable: true,
             }}
             modules={[Pagination]}
-            className="h-[210px] xl:h-[600px]  md:h-[500px] mt-2"
+            className="h-[210px] xl:h-[500px]   md:h-[3500px] mt-3"
           >
             <SwiperSlide>
               <Image
@@ -86,15 +80,7 @@ export default function Home() {
             </a>
           </div>
           <div className=" flex items-center text-xl md:text-4xl justify-center  mt-16 font-mono font-bold">
-            <Image
-              alt="image gem"
-              className="w-[50px] md:w-[100px]"
-              width={100}
-              height={100}
-              src={"/gemEx.gif"}
-            />
             <div>
-              {" "}
               <span className="text-green-400">OUR</span> SERVICES
             </div>
           </div>
@@ -134,7 +120,7 @@ export default function Home() {
           <div className="mt-16 grid grid-cols-1 md:grid-cols-2 relative ">
             <Image
               alt={"slide background"}
-              src={"/slide.jpg"}
+              src={"/bg.jpg"}
               fill
               priority
               className="z-[-1]"
@@ -326,10 +312,16 @@ export default function Home() {
               By entering any information, you affirm you have read and agree to
               the Terms of Service and Privacy Policy.
             </p>
-            <button className="p-4 bg-green-400 mb-20 rounded-md">Send</button>
+            <button className="p-4 bg-green-400 mb-20 rounded-md text-white font-bold text-xl">
+              Send
+            </button>
           </div>
         </div>
         <HomeFoter />
+        <Script
+          src="//code.tidio.co/cknjplhesnbsxez5y1idm3dsw6p4ihsu.js"
+          async
+        ></Script>
       </main>
 
       <Footer />

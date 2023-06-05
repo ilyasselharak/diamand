@@ -9,6 +9,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FcHome, FcCalendar, FcProcess } from "react-icons/fc";
 import Link from "next/link";
+import { PayPalButton } from "react-paypal-button-v2";
 
 type MyObject = {
   title: string;
@@ -60,8 +61,9 @@ export default function Type() {
     email: z.string().min(1, { message: "Email is required" }).email({
       message: "Must be a valid email",
     }),
+
     phone: z.string().min(5, { message: "phone must be at least 6 numbers" }),
-    // address: z.string().min(1, { message: "Address is required" }),
+    address: z.string().min(1, { message: "Address is required" }),
     // city: z.string().min(1, { message: "city is required" }),
   });
   const {
@@ -73,7 +75,7 @@ export default function Type() {
     resolver: zodResolver(validationSchema),
   });
   const onSubmit: SubmitHandler<ValidationSchema> = (data) => {
-    return data;
+    console.log(data);
   };
   return (
     <>
@@ -146,31 +148,7 @@ export default function Type() {
                       onClick={handleObjectReturn}
                       Dir="/assets/oven.svg"
                       title="oven"
-                      price={15}
-                    />
-                  </div>
-                  <div>
-                    <Extra
-                      onClick={handleObjectReturn}
-                      Dir="/assets/dishwasher.svg"
-                      title="dishwasher"
-                      price={15}
-                    />
-                  </div>
-                  <div>
-                    <Extra
-                      onClick={handleObjectReturn}
-                      Dir="/assets/wall.svg"
-                      title="wall"
-                      price={15}
-                    />
-                  </div>
-                  <div>
-                    <Extra
-                      onClick={handleObjectReturn}
-                      Dir="/assets/blind.svg"
-                      title="blind"
-                      price={15}
+                      price={30}
                     />
                   </div>
 
@@ -179,7 +157,7 @@ export default function Type() {
                       onClick={handleObjectReturn}
                       Dir="/assets/fridge.svg"
                       title="fridge"
-                      price={15}
+                      price={30}
                     />
                   </div>
                   <div>
@@ -187,39 +165,24 @@ export default function Type() {
                       onClick={handleObjectReturn}
                       Dir="/assets/microwave.svg"
                       title="microwave"
-                      price={15}
+                      price={30}
                     />
                   </div>
                   <div>
                     <Extra
                       onClick={handleObjectReturn}
                       Dir="/assets/window.svg"
-                      title="window"
-                      price={15}
+                      title="inside window"
+                      price={30}
                     />
                   </div>
-                  <div>
-                    <Extra
-                      onClick={handleObjectReturn}
-                      Dir="/assets/dryer.svg"
-                      title="dryer"
-                      price={15}
-                    />
-                  </div>
+
                   <div>
                     <Extra
                       onClick={handleObjectReturn}
                       Dir="/assets/cabinet.svg"
                       title="cabinet"
-                      price={15}
-                    />
-                  </div>
-                  <div>
-                    <Extra
-                      onClick={handleObjectReturn}
-                      Dir="/assets/washing.svg"
-                      title="washing"
-                      price={15}
+                      price={30}
                     />
                   </div>
                 </div>
@@ -236,7 +199,7 @@ export default function Type() {
                 *Please note: Your arrival window is the block of time in which
                 the cleaners may arrive.
               </p>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8 border-b border-gray-300 pb-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 border-b border-gray-300 pb-6 gap-4 mt-8  ">
                 <input
                   type="date"
                   onChange={(e) => {
@@ -253,31 +216,26 @@ export default function Type() {
                   }}
                   className="border border-gray-400 rounded-md p-2 "
                 >
+                  <option value="">Time :</option>
                   <option value="08:00AM - 10:00AM">08:00AM - 10:00AM</option>
                   <option value="10:00AM - 12:00PM">10:00AM - 12:00PM</option>
                   <option value="12:00AM - 14:00PM">12:00AM - 14:00PM</option>
                   <option value="14:00AM - 16:00PM">14:00AM - 16:00PM</option>
                 </select>
-              </div>
-              <div className="uppercase text-xl mt-6">HOW OFTEN</div>
-              <p className="mt-3">
-                It's all about matching you with the perfect clean for your
-                home. Scheduling is flexible. Cancel or reschedule anytime.
-                Discounts are applied based on selection.
-              </p>
-              <div className="text-center  border-b border-gray-300 pb-8">
                 <select
                   onChange={(e) => {
                     setRepeat(e.target.value);
                   }}
-                  className="border p-3 mt-6 text-center rounded-md w-[50%] border-gray-500"
+                  className="border p-3 mt-6 text-center rounded-md w-full border-gray-500"
                 >
+                  <option value={"One Time"}>HOW OFTEN :</option>
                   <option value={"One Time"}>One Time</option>
                   <option value={"Weekly"}>Weekly</option>
                   <option value={"Biweekly"}>Biweekly</option>
                   <option value={"Monthly"}>Monthly</option>
                 </select>
               </div>
+
               <div className="uppercase text-xl mt-6">Who you are</div>
               <p className="mt-3">
                 This information will be used to contact you about your service.
@@ -346,83 +304,45 @@ export default function Type() {
               </div>
               <div className="uppercase text-xl mt-6">Address</div>
               <div className="mt-3">Where would you like us to clean?</div>
-              <div className="flex flex-wrap gap-2 mt-8 border-b border-gray-300 pb-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-2 w-[100%]">
-                  <input
-                    type="text"
-                    className="border border-gray-400 rounded-md p-2"
-                    placeholder="Address*"
-                  />
+              <div className="flex  flex-wrap gap-2 mt-8 border-b border-gray-300 pb-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-2 w-[100%]">
+                  <div className="">
+                    <input
+                      type="text"
+                      className="border w-full border-gray-400 rounded-md p-2"
+                      {...register("address")}
+                      placeholder="Address*"
+                    />
+                    {errors.email && (
+                      <p className="text-xs italic text-red-500 mt-2">
+                        {" "}
+                        {errors.address?.message}
+                      </p>
+                    )}
+                  </div>
                   <input
                     type="text"
                     className="border border-gray-400 rounded-md p-2"
                     placeholder="Apt/Suite #"
                   />
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-2 w-[100%]">
-                  <input
-                    type="text"
-                    className="border border-gray-400 rounded-md p-2"
-                    placeholder="City*"
-                  />
-                  <select className="border border-gray-400 rounded-md">
-                    <option value="AL">Alabama</option>
-                    <option value="AK">Alaska</option>
-                    <option value="AZ">Arizona</option>
-                    <option value="AR">Arkansas</option>
-                    <option value="CA">California</option>
-                    <option value="CO">Colorado</option>
-                    <option value="CT">Connecticut</option>
-                    <option value="DE">Delaware</option>
-                    <option value="DC">District Of Columbia</option>
-                    <option value="FL">Florida</option>
-                    <option value="GA">Georgia</option>
-                    <option value="HI">Hawaii</option>
-                    <option value="ID">Idaho</option>
-                    <option value="IL">Illinois</option>
-                    <option value="IN">Indiana</option>
-                    <option value="IA">Iowa</option>
-                    <option value="KS">Kansas</option>
-                    <option value="KY">Kentucky</option>
-                    <option value="LA">Louisiana</option>
-                    <option value="ME">Maine</option>
-                    <option value="MD">Maryland</option>
-                    <option value="MA">Massachusetts</option>
-                    <option value="MI">Michigan</option>
-                    <option value="MN">Minnesota</option>
-                    <option value="MS">Mississippi</option>
-                    <option value="MO">Missouri</option>
-                    <option value="MT">Montana</option>
-                    <option value="NE">Nebraska</option>
-                    <option value="NV">Nevada</option>
-                    <option value="NH">New Hampshire</option>
-                    <option value="NJ">New Jersey</option>
-                    <option value="NM">New Mexico</option>
-                    <option value="NY">New York</option>
-                    <option value="NC">North Carolina</option>
-                    <option value="ND">North Dakota</option>
-                    <option value="OH">Ohio</option>
-                    <option value="OK">Oklahoma</option>
-                    <option value="OR">Oregon</option>
-                    <option value="PA">Pennsylvania</option>
-                    <option value="RI">Rhode Island</option>
-                    <option value="SC">South Carolina</option>
-                    <option value="SD">South Dakota</option>
-                    <option value="TN">Tennessee</option>
-                    <option value="TX">Texas</option>
-                    <option value="UT">Utah</option>
-                    <option value="VT">Vermont</option>
-                    <option value="VA">Virginia</option>
-                    <option value="WA">Washington</option>
-                    <option value="WV">West Virginia</option>
-                    <option value="WI">Wisconsin</option>
-                    <option value="WY">Wyoming</option>
+                  <select className="border p-2 border-gray-400 rounded-md">
+                    <option>Choose area</option>
+                    <option value="Andover">Andover</option>
+                    <option value="Billerica">Billerica</option>
+                    <option value="Boxford">Boxford</option>
+                    <option value="Georgetown">Georgetown</option>
+                    <option value="Groveland">Groveland</option>
+                    <option value="Middleton">Middleton</option>
+                    <option value="North Andover">North Andover</option>
+                    <option value="Tewksbury">Tewksbury</option>
+                    <option value="Topsfield">Topsfield</option>
+                    <option value="West Bosford">West Bosford</option>
+                    <option value="Willmington">Willmington</option>
+                    <option value="Woburn">Woburn</option>
+                    <option value="Melrose">Melrose</option>
+                    <option value="Stoneham">Stoneham</option>
+                    <option value="Cambridge">Cambridge</option>
                   </select>
-                  <input
-                    type="text"
-                    className="border border-gray-400 rounded-md p-2"
-                    placeholder="ZIP CODE*"
-                  />
                 </div>
               </div>
               <div className="uppercase text-xl mt-6">
@@ -436,6 +356,15 @@ export default function Type() {
                   placeholder="Special Instructions: Is there anything we should know? Example: I am allergic to a particular cleaning product"
                   className="border border-gray-400 w-full resize-none mt-4 md:p-4 p-2 rounded-md"
                 ></textarea>
+              </div>
+              <div className="h-fit">
+                <PayPalButton
+                  amount={total}
+                  options={{
+                    clientId:
+                      "AfmaiHD7lqPoqWcySuLWLqcy35kdrbEK-kADip7cQHvKe0cSUzszANcJyYknehaVJ9CZ2E6xdusxS6mv",
+                  }}
+                />
               </div>
               <div className="mt-8">
                 By clicking the Book Now button you are agreeing to our Terms of
