@@ -34,7 +34,7 @@ export default function Package({ title, price, houre }: Props) {
               </div>
             </div>
           </div>
-          <div className="flip-card-back flex flex-col justify-around rounded-xl">
+          <div className="flip-card-back bg-green-500 flex flex-col justify-around rounded-xl">
             <div className="text-start w-[80%] mx-auto h-[150px] flex flex-col justify-around">
               <div className="text-center text-xl">{title} details</div>
               <p className="flex items-center gap-1 mt-2">

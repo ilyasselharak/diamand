@@ -5,7 +5,7 @@ import { BsFacebook, BsInstagram } from "react-icons/bs";
 
 export default function HomeFoter() {
   return (
-    <div className="bg-green-200 h-[200px] mt-16 p-2 hidden md:block">
+    <div className="bg-green-200 h-[200px] font-serif mt-16 p-2 hidden md:block">
       <div className="flex justify-around items-center">
         <div>
           <Image
