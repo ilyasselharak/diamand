@@ -36,9 +36,9 @@ export default function HomeFoter() {
           <span>
             <BsFacebook />
           </span>
-          <span>
+          <Link href={"https://www.instagram.com/krystalcleaningservicesma/"}>
             <BsInstagram />
-          </span>
+          </Link>
         </div>
       </div>
       <div className="text-center mt-4">Ⓒ 2023 - All Rights Are Reserved</div>

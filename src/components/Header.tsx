@@ -1,16 +1,20 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { FcHome, FcCallback, FcPlanner } from "react-icons/fc";
 import { GiVacuumCleaner } from "react-icons/gi";
 
 function Header() {
+  const router = useRouter();
+  const path = router.pathname;
+
   return (
     <>
       <header className="h-[40px] bg-green-200 text-xl flex items-center justify-center font-bold text-green-600">
         10% Off Your First Book
       </header>
-      <div className=" shadow-myShadow">
-        <div className="flex items-center justify-center flex-wrap md:justify-between w-[80%] mx-auto p-4">
+      <div className="text-[#062c96] shadow-myShadow">
+        <div className="flex font-mono font-bold items-center justify-center flex-wrap md:justify-between w-[80%] mx-auto p-4">
           <div className="flex items-center">
             <Link href={"/"}>
               <Image
@@ -25,23 +29,24 @@ function Header() {
           <div className=" text-xl flex-wrap gap-6  justify-center md:flex hidden  items-center">
             <Link
               href={"/"}
-              className=" flex gap-1 items-center text-blue-400 sm:text-3xl"
+              className={`flex gap-1 items-center ${
+                path == "/" ? "text-blue-400 " : ""
+              } `}
             >
-              <FcHome />
               Home
             </Link>
             <Link
               href={"/Booking/Standard"}
-              className="flex gap-1 items-center"
+              className={` ${
+                path.includes("Booking") ? "text-blue-400" : ""
+              } gap-1 items-center`}
             >
-              <FcPlanner />
               Book
             </Link>
             <Link href={"/"} className="flex gap-1 items-center">
-              <FcCallback /> Contact
+              Contact
             </Link>
             <Link href={"/"} className="flex gap-1 items-center">
-              <GiVacuumCleaner />
               Services
             </Link>
           </div>

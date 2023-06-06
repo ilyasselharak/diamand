@@ -9,6 +9,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FcHome, FcCalendar } from "react-icons/fc";
 import Link from "next/link";
+import Image from "next/image";
 
 type MyObject = {
   title: string;
@@ -24,7 +25,7 @@ export default function Type() {
   const [bathRoom, setBathRoom] = useState(1);
   const [kitchen, setKitchen] = useState(1);
   const [total, setTotal] = useState(0);
-
+  const [date, setDate] = useState("Choose service Day...");
   const handleObjectReturn = (obj: MyObject) => {
     if (obj.isSelected == true) {
       setData([...data, obj.title]);
@@ -39,7 +40,7 @@ export default function Type() {
     DEEP = 180.0,
     MOVE_IN_OUT = 260.0,
   }
-  const [date, setDate] = useState("Choose service Day...");
+
   var price = 0;
   switch (path) {
     case "Standard":
@@ -63,7 +64,6 @@ export default function Type() {
 
     phone: z.string().min(5, { message: "phone must be at least 6 numbers" }),
     address: z.string().min(1, { message: "Address is required" }),
-    // city: z.string().min(1, { message: "city is required" }),
   });
   const {
     register,
@@ -95,97 +95,95 @@ export default function Type() {
               </div>
             </div>
             <div>
-              <div className="uppercase text-xl mt-6">
-                tell us about your home
-              </div>
-              <div className="flex flex-col gap-5 border-b border-gray-300 pb-8">
-                <div className="flex gap-4 w-full md:w-[60%] mx-auto mt-4">
-                  <select
-                    onChange={(e) => {
-                      setBedRoom(Number(e.target.value));
-                    }}
-                    className="text-center border py-2 md:p-3 rounded-md w-full border-gray-500"
-                  >
-                    <option value={1}>1 Bedroom</option>
-                    <option value={2}>2 Bedroom</option>
-                    <option value={3}>3 Bedroom</option>
-                  </select>
-                  <select
-                    onChange={(e) => {
-                      setBathRoom(Number(e.target.value));
-                    }}
-                    className="text-center border py-2 md:p-3 rounded-md  w-full border-gray-500"
-                  >
-                    <option value={1}>1 Bathroom</option>
-                    <option value={2}>2 Bathroom</option>
-                    <option value={3}>3 Bathroom</option>
-                  </select>
-                </div>
-                <div className="flex gap-4 w-full md:w-[60%] mx-auto">
-                  <select
-                    onChange={(e) => {
-                      setKitchen(Number(e.target.value));
-                    }}
-                    className="text-center border py-2 md:p-3 rounded-md w-full border-gray-500"
-                  >
-                    <option value={1}>1 Kitchen</option>
-                    <option value={2}>2 Kitchen</option>
-                    <option value={3}>3 Kitchen</option>
-                  </select>
-                  <select className="text-center border py-2 md:p-3 rounded-md w-full border-gray-500">
-                    <option>Slightly Dirty</option>
-                    <option>Pretty Dirty</option>
-                    <option>Very Dirty</option>
-                  </select>
-                </div>
-              </div>
-              <div className="border-b border-gray-300 pb-8">
-                <div className="uppercase text-xl mt-6">add Extras</div>
-                <div className="flex gap-4 flex-wrap justify-center mt-8">
-                  <div>
-                    <Extra
-                      onClick={handleObjectReturn}
-                      Dir="/assets/oven.svg"
-                      title="oven"
-                      price={30}
-                    />
+              {path == "Standard" && (
+                <>
+                  <div className="uppercase text-xl mt-6">
+                    tell us about your home
                   </div>
+                  <div className="flex flex-col gap-5 border-b border-gray-300 pb-8">
+                    <div className="flex gap-4 w-full md:w-[80%] mx-auto mt-4">
+                      <select
+                        onChange={(e) => {
+                          setBedRoom(Number(e.target.value));
+                        }}
+                        className="text-center border py-2 md:p-3 rounded-md w-full border-gray-500"
+                      >
+                        <option value={1}>1 Bedroom</option>
+                        <option value={2}>2 Bedroom</option>
+                        <option value={3}>3 Bedroom</option>
+                      </select>
+                      <select
+                        onChange={(e) => {
+                          setBathRoom(Number(e.target.value));
+                        }}
+                        className="text-center border py-2 md:p-3 rounded-md  w-full border-gray-500"
+                      >
+                        <option value={1}>1 Bathroom</option>
+                        <option value={2}>2 Bathroom</option>
+                        <option value={3}>3 Bathroom</option>
+                      </select>
 
-                  <div>
-                    <Extra
-                      onClick={handleObjectReturn}
-                      Dir="/assets/fridge.svg"
-                      title="fridge"
-                      price={30}
-                    />
+                      <select
+                        onChange={(e) => {
+                          setKitchen(Number(e.target.value));
+                        }}
+                        className="text-center border py-2 md:p-3 rounded-md w-full border-gray-500"
+                      >
+                        <option value={1}>1 Kitchen</option>
+                        <option value={2}>2 Kitchen</option>
+                        <option value={3}>3 Kitchen</option>
+                      </select>
+                    </div>
                   </div>
-                  <div>
-                    <Extra
-                      onClick={handleObjectReturn}
-                      Dir="/assets/microwave.svg"
-                      title="microwave"
-                      price={30}
-                    />
-                  </div>
-                  <div>
-                    <Extra
-                      onClick={handleObjectReturn}
-                      Dir="/assets/window.svg"
-                      title="inside window"
-                      price={30}
-                    />
-                  </div>
+                  <div className="border-b border-gray-300 pb-8">
+                    <div className="uppercase text-xl mt-6">add Extras</div>
+                    <div className="flex gap-4 flex-wrap justify-center mt-8">
+                      <div>
+                        <Extra
+                          onClick={handleObjectReturn}
+                          Dir="/assets/oven.svg"
+                          title="oven"
+                          price={30}
+                        />
+                      </div>
 
-                  <div>
-                    <Extra
-                      onClick={handleObjectReturn}
-                      Dir="/assets/cabinet.svg"
-                      title="cabinet"
-                      price={30}
-                    />
+                      <div>
+                        <Extra
+                          onClick={handleObjectReturn}
+                          Dir="/assets/fridge.svg"
+                          title="fridge"
+                          price={30}
+                        />
+                      </div>
+                      <div>
+                        <Extra
+                          onClick={handleObjectReturn}
+                          Dir="/assets/microwave.svg"
+                          title="microwave"
+                          price={30}
+                        />
+                      </div>
+                      <div>
+                        <Extra
+                          onClick={handleObjectReturn}
+                          Dir="/assets/window.svg"
+                          title="inside window"
+                          price={30}
+                        />
+                      </div>
+
+                      <div>
+                        <Extra
+                          onClick={handleObjectReturn}
+                          Dir="/assets/cabinet.svg"
+                          title="cabinet"
+                          price={30}
+                        />
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
+                </>
+              )}
               <div className="uppercase text-xl mt-6">
                 WHEN WOULD YOU LIKE US TO COME?
               </div>
@@ -346,17 +344,24 @@ export default function Type() {
               </div>
 
               <div className="mt-8">
-                By clicking the Book Now button you are agreeing to our Terms of
-                Service and{" "}
-                <Link href="/privacy-policy" className="cursor-pointer">
+                By clicking the Book Now button you are agreeing to our{" "}
+                <Link
+                  href="/privacy-policy"
+                  className=" text-[#062c96] font-bold cursor-pointer"
+                >
                   Privacy Policy
                 </Link>
                 .
               </div>
-              <div className="flex gap-4 mt-4">
-                <input type="checkbox" />
-                <span>I agree to the Terms of Service and Privacy Policy.</span>
-              </div>
+            </div>
+            <div className="flex justify-center">
+              <Image
+                alt="venmo"
+                className="w-[200px] mt-8 md:w-[250px] h-[80px] md:h-[100px] rounded-md"
+                width={250}
+                height={500}
+                src={"/venmo.png"}
+              />
             </div>
             <div className="mt-14"></div>
             <button
@@ -371,33 +376,35 @@ export default function Type() {
               <div className="border-b border-gray-300 text-center text-xl pb-4 uppercase">
                 Booking Summary
               </div>
-              <div className="flex gap-2 mt-8 justify-between items-end">
-                <div className="flex gap-6">
-                  <FcHome className="text-4xl" />
+              {path == "Standard" && (
+                <div className="flex gap-2 mt-8 justify-between items-end">
+                  <div className="flex gap-6">
+                    <FcHome className="text-4xl" />
+                    <div>
+                      {bedRoom} Bedroom{" "}
+                      <ul className="ml-4 list-disc ">
+                        <li>{kitchen} kitchen</li>
+                        <li>{bathRoom} bathroom</li>
+                      </ul>
+                      {data.map((item) => {
+                        return <p className="uppercase mt-4">+ Clean {item}</p>;
+                      })}
+                    </div>
+                  </div>
                   <div>
-                    {bedRoom} Bedroom{" "}
-                    <ul className="ml-4 list-disc ">
-                      <li>{kitchen} kitchen</li>
-                      <li>{bathRoom} bathroom</li>
-                    </ul>
-                    {data.map((item) => {
-                      return <p className="uppercase mt-4">+ Clean {item}</p>;
-                    })}
+                    {
+                      (price =
+                        bedRoom * 15 +
+                        bathRoom * 20 +
+                        kitchen * 40 +
+                        price -
+                        75 +
+                        total)
+                    }
+                    $
                   </div>
                 </div>
-                <div>
-                  {
-                    (price =
-                      bedRoom * 15 +
-                      bathRoom * 20 +
-                      kitchen * 40 +
-                      price -
-                      75 +
-                      total)
-                  }
-                  $
-                </div>
-              </div>
+              )}
               <div className="mt-4 flex items-center gap-4">
                 <FcCalendar className="text-4xl" />
                 <div>
