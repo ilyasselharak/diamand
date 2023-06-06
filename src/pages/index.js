@@ -15,6 +15,7 @@ import { GiBrickWall, GiWashingMachine, GiMirrorMirror } from "react-icons/gi";
 import Package from "@/components/Package";
 import HomeFoter from "@/components/HomeFoter";
 import Script from "next/script";
+import Link from "next/link";
 
 export default function Home() {
   const [refund, setRefund] = useState(false);
@@ -69,11 +70,14 @@ export default function Home() {
             We Will Clean Your House As Soon As Possible
           </div>
           <div className="flex gap-3 justify-center mt-3">
-            <button className="bg-[#a1be3a] shadow-lg shadow-cyan-500/50 text-white px-6 py-3 rounded-xl w-fit flex items-center gap-2">
+            <Link
+              href={"/Booking/Standard"}
+              className="bg-[#a1be3a] shadow-lg shadow-cyan-500/50 text-white px-6 py-3 rounded-xl w-fit flex items-center gap-2"
+            >
               <FcCalendar /> Book Now
-            </button>
+            </Link>
             <a href={`tel:1-781-367-6258`}>
-              <button className="bg-[#a1be3a] text-sm md: shadow-lg shadow-cyan-500/50 text-white px-6 py-3 rounded-xl w-fit flex items-center gap-2">
+              <button className="bg-[#a1be3a] text-sm  shadow-lg shadow-cyan-500/50 text-white px-6 py-3 rounded-xl w-fit flex items-center gap-2">
                 <FcPhone />
                 Call Now
               </button>
