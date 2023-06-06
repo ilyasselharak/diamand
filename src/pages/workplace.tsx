@@ -1,4 +1,5 @@
 import Header from "@/components/Header";
+import HomeFoter from "@/components/HomeFoter";
 import Image from "next/image";
 import React from "react";
 
@@ -81,6 +82,7 @@ function workplace() {
         </div>
         <div className="mt-14"></div>
       </main>
+      <HomeFoter />
     </>
   );
 }
