@@ -7,9 +7,8 @@ import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { FcHome, FcCalendar, FcProcess } from "react-icons/fc";
+import { FcHome, FcCalendar } from "react-icons/fc";
 import Link from "next/link";
-import { PayPalButton } from "react-paypal-button-v2";
 
 type MyObject = {
   title: string;
@@ -20,13 +19,11 @@ export default function Type() {
   const [data, setData] = useState<string[]>([]);
   const router = useRouter();
   const path = router.query.type;
-  const [repeat, setRepeat] = useState("One Time");
   const [time, setTime] = useState("");
   const [bedRoom, setBedRoom] = useState(1);
   const [bathRoom, setBathRoom] = useState(1);
   const [kitchen, setKitchen] = useState(1);
   const [total, setTotal] = useState(0);
-  const [clicked, setClicked] = useState(true);
 
   const handleObjectReturn = (obj: MyObject) => {
     if (obj.isSelected == true) {
@@ -224,18 +221,6 @@ export default function Type() {
                   <option value="12:00AM - 14:00PM">12:00AM - 14:00PM</option>
                   <option value="14:00AM - 16:00PM">14:00AM - 16:00PM</option>
                 </select>
-                <select
-                  onChange={(e) => {
-                    setRepeat(e.target.value);
-                  }}
-                  className="border p-3 mt-6 text-center rounded-md w-full border-gray-500"
-                >
-                  <option value={"One Time"}>HOW OFTEN :</option>
-                  <option value={"One Time"}>One Time</option>
-                  <option value={"Weekly"}>Weekly</option>
-                  <option value={"Biweekly"}>Biweekly</option>
-                  <option value={"Monthly"}>Monthly</option>
-                </select>
               </div>
 
               <div className="uppercase text-xl mt-6">Who you are</div>
@@ -420,10 +405,7 @@ export default function Type() {
                   {date !== "Choose service Day..." ? " / " + time : ""}
                 </div>
               </div>
-              <div className="mt-4 flex gap-4 items-center">
-                <FcProcess className="text-4xl" />
-                <div>{repeat}</div>
-              </div>
+
               <div className="flex justify-between mt-14 border-t border-gray-600 pt-8">
                 <div className="uppercase font-bold">total</div>
                 <div className="text-xl">{price}$</div>
