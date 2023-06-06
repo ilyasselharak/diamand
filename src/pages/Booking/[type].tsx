@@ -207,7 +207,7 @@ export default function Type() {
                   onChange={(e) => {
                     setDate(e.target.value);
                   }}
-                  placeholder="CHOOSE A DAY"
+                  placeholder="MM/DD/YYYY"
                   className="border border-gray-500 w-full p-2 rounded-md"
                 />
                 <select

@@ -42,3 +42,13 @@
   color: white;
   transform: rotateY(180deg);
 }
+@media only screen and (max-width: 600px) {
+  input[type="date"]:before {
+    color: lightgrey;
+    content: attr(placeholder) !important;
+    margin-right: 0.5em;
+  }
+}
+
+
+
