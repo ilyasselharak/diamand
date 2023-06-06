@@ -26,6 +26,8 @@ export default function Type() {
   const [bathRoom, setBathRoom] = useState(1);
   const [kitchen, setKitchen] = useState(1);
   const [total, setTotal] = useState(0);
+  const [clicked, setClicked] = useState(true);
+
   const handleObjectReturn = (obj: MyObject) => {
     if (obj.isSelected == true) {
       setData([...data, obj.title]);
@@ -357,15 +359,7 @@ export default function Type() {
                   className="border border-gray-400 w-full resize-none mt-4 md:p-4 p-2 rounded-md"
                 ></textarea>
               </div>
-              <div className="h-fit">
-                <PayPalButton
-                  amount={total}
-                  options={{
-                    clientId:
-                      "AfmaiHD7lqPoqWcySuLWLqcy35kdrbEK-kADip7cQHvKe0cSUzszANcJyYknehaVJ9CZ2E6xdusxS6mv",
-                  }}
-                />
-              </div>
+
               <div className="mt-8">
                 By clicking the Book Now button you are agreeing to our Terms of
                 Service and{" "}
@@ -379,9 +373,10 @@ export default function Type() {
                 <span>I agree to the Terms of Service and Privacy Policy.</span>
               </div>
             </div>
+            <div className="mt-14"></div>
             <button
               type="submit"
-              className="p-4 text-xl text-white font-bold bg-green-400 mb-20 rounded-md w-full mt-14"
+              className="p-4 text-xl text-white font-bold bg-green-400 mb-20 rounded-md w-full "
             >
               Book Now
             </button>
