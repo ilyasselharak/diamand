@@ -28,6 +28,7 @@ export default function Type({ areas }: any) {
   const router = useRouter();
   const path = router.query.type;
   const [time, setTime] = useState("");
+  const [cash, setCash] = useState(false);
   const [bedRoom, setBedRoom] = useState(1);
   const [bathRoom, setBathRoom] = useState(1);
   const [kitchen, setKitchen] = useState(1);
@@ -35,6 +36,13 @@ export default function Type({ areas }: any) {
   const [comment, setComment] = useState("");
   const [total, setTotal] = useState(0);
   const [date, setDate] = useState("Choose service Day...");
+  const handleClick = (event: any) => {
+    if (event.target.checked === true) {
+      setCash(true);
+    } else {
+      setCash(false);
+    }
+  };
   const handleObjectReturn = (obj: MyObject) => {
     if (obj.isSelected == true) {
       setData([...data, obj.title]);
@@ -391,23 +399,35 @@ export default function Type({ areas }: any) {
               />
             </div>
             <div className="mt-14"></div>
-            <PayPalButton
-              amount="0.01"
-              // shippingPreference="NO_SHIPPING" // default is "GET_FROM_FILE"
-              onSuccess={(details: any, data: any) => {
-                alert("success");
-              }}
-              options={{
-                clientId: process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID,
-                currency: "USD",
-              }}
-            />
-            <button
-              type="submit"
-              className="p-4 text-xl text-white font-bold bg-green-400 mb-20 rounded-md w-full "
-            >
-              Book Now
-            </button>
+            {!cash && (
+              <PayPalButton
+                amount={prices}
+                onSuccess={(details: any, data: any) => {
+                  alert("success");
+                }}
+                options={{
+                  clientId: process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID,
+                  currency: "USD",
+                }}
+              />
+            )}
+            <div>
+              <input
+                type="checkbox"
+                id="paypal"
+                onClick={(event) => handleClick(event)}
+              />
+              <label htmlFor="paypal">Cash</label>
+            </div>
+
+            {cash && (
+              <button
+                type="submit"
+                className="p-4 text-xl text-white font-bold bg-green-400 mb-20 rounded-md w-full "
+              >
+                Book Now
+              </button>
+            )}
           </form>
           <div className="hidden md:block relative w-[30%]">
             <div className="sticky top-0 w-full border rounded-lg p-4 border-gray-500">
