@@ -222,7 +222,7 @@ export default function Type({ areas }: any) {
                 *Please note: Your arrival window is the block of time in which
                 the cleaners may arrive.
               </p>
-              <div className="grid grid-cols-1 md:grid-cols-2 border-b border-gray-300 pb-6 gap-4 mt-8  ">
+              <div className="grid grid-cols-1 md:grid-cols-2 w-full border-b border-gray-300 pb-6 gap-4 mt-8  ">
                 <input
                   type="date"
                   name="date"
