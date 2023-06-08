@@ -102,6 +102,7 @@ export default function Type({ areas }: any) {
       phone: data.phone,
       address: data.address,
     });
+    router.push("/success");
   };
   return (
     <>
