@@ -1,6 +1,7 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Image from "next/image";
+import { findAllQuestions } from "./api/frequently";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Pagination } from "swiper";
@@ -16,10 +17,17 @@ import Package from "@/components/Package";
 import HomeFoter from "@/components/HomeFoter";
 import Script from "next/script";
 import Link from "next/link";
+import { initMongoose } from "@/lib/mongoose";
+import Faq from "@/components/Faq";
 
-export default function Home() {
-  const [refund, setRefund] = useState(false);
+type Props = {
+  _id: string;
+  title: string;
+  content: string;
+};
+export default function Home({ faq }: any) {
   const [pet, setPet] = useState(false);
+
   return (
     <>
       <Header />
@@ -225,50 +233,9 @@ export default function Home() {
             FAQ
           </div>
           <div className="mt-8 flex flex-col gap-3">
-            <div
-              onClick={() => {
-                setPet(!pet);
-              }}
-              className="bg-white shadow-myShadow p-4 font-medium flex justify-between items-center"
-            >
-              I have a pet can i leave it in home ?
-              <AiFillCaretDown />
-            </div>
-            <div
-              className={`${
-                pet ? "" : "hidden"
-              } bg-white shadow-lg p-4 flex flex-col gap-2`}
-            >
-              <p>
-                we recommend to put it somewhere like a separate room while we
-                are there
-              </p>
-              <p>
-                the pit make sound nice because it is a part of the family but
-                we have some don't like noise or may want to play.
-              </p>
-            </div>
-            <div
-              onClick={() => {
-                setRefund(!refund);
-              }}
-              className="bg-white shadow-myShadow p-4 font-medium flex justify-between items-center"
-            >
-              Can I Cancel The Booking and Refund Money ?
-              <AiFillCaretDown />
-            </div>
-            <div
-              className={`${
-                refund ? "" : "hidden"
-              } bg-white shadow-lg p-4 flex flex-col gap-2`}
-            >
-              <p>if 24h before appointment . non Refundable</p>
-              <p>
-                if 48h before appointment you can get a credit so you can used
-                next time
-              </p>
-              <p>if Before 48H you can get full refund back</p>
-            </div>
+            {faq.map((item: Props) => (
+              <Faq key={item._id} title={item.title} content={item.content} />
+            ))}
           </div>
           <div className="text-4xl font-bold flex font-mono justify-center items-center mt-16">
             Contact Us
@@ -331,4 +298,14 @@ export default function Home() {
       <Footer />
     </>
   );
+}
+export async function getServerSideProps() {
+  await initMongoose();
+  const questions = await findAllQuestions();
+
+  return {
+    props: {
+      faq: JSON.parse(JSON.stringify(questions)),
+    },
+  };
 }

@@ -13,6 +13,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { findAllAreas } from "../api/areas";
 import axios from "axios";
+import { PayPalButton } from "react-paypal-button-v2";
 type MyObject = {
   title: string;
   isSelected: boolean;
@@ -390,6 +391,17 @@ export default function Type({ areas }: any) {
               />
             </div>
             <div className="mt-14"></div>
+            <PayPalButton
+              amount="0.01"
+              // shippingPreference="NO_SHIPPING" // default is "GET_FROM_FILE"
+              onSuccess={(details: any, data: any) => {
+                alert("success");
+              }}
+              options={{
+                clientId: process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID,
+                currency: "USD",
+              }}
+            />
             <button
               type="submit"
               className="p-4 text-xl text-white font-bold bg-green-400 mb-20 rounded-md w-full "
