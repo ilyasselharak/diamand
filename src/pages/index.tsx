@@ -3,6 +3,7 @@ import Header from "@/components/Header";
 import Image from "next/image";
 import { findAllQuestions } from "./api/frequently";
 import { findAllContent } from "./api/home";
+
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Pagination } from "swiper";
@@ -45,7 +46,7 @@ export default function Home({ faq, info }: any) {
               clickable: true,
             }}
             modules={[Pagination]}
-            className="h-[210px] xl:h-[500px]   md:h-[3500px] mt-3"
+            className="h-[210px] xl:h-[500px] md:h-[350px] mt-3"
           >
             <SwiperSlide>
               <Image
@@ -145,25 +146,14 @@ export default function Home({ faq, info }: any) {
                 src={"/video.gif"}
               />
             </div>
-            <div className="md:text-start text-center md:p-20 p-4 text-md font-bold md:text-xl">
-              KRYSTAL Cleaning Experience
-              <div className="p-0 font-normal">
-                <p className="mt-4">
-                  Connecting communities and cultures with families and
-                  individuals alike through one mission. Delivering the best
-                  cleans and products to any home.
-                </p>
-                <p className="mt-4">
-                  <span className="font-font">
-                    Community, Culture, Kindness.
-                  </span>{" "}
-                  Our three core values match our one mission. Delivering the
-                  best KRYSTAL cleaning specialists, creating the best KRYSTAL
-                  cleaning products to every family and home, creating a service
-                  based around honesty and reliability.
-                </p>
+            {info.map((item: any) => (
+              <div className="md:text-start text-center md:p-20 p-4 text-md font-bold md:text-xl">
+                {item.slide1.title}
+                <div className="p-0 font-normal">
+                  <p className="mt-4">{item.slide1.paragraph}</p>
+                </div>
               </div>
-            </div>
+            ))}
           </div>
 
           <div className=" flex items-center text-xl gap-2 justify-center md:text-4xl mt-16 font-mono font-bold">

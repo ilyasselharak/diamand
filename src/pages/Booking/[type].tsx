@@ -42,15 +42,6 @@ export default function Type({ areas }: any) {
   const [minDate, setMinDate] = useState("");
   const today = new Date().toISOString().split("T")[0];
 
-  const handleObjectReturn = (obj: MyObject) => {
-    if (obj.isSelected == true) {
-      setExtra([...extra, obj.title]);
-      setTotal(total + obj.price);
-    } else if (obj.isSelected == false) {
-      setTotal(total - obj.price);
-      setExtra(extra.filter((item) => item !== obj.title));
-    }
-  };
   enum PRICE {
     STANDARD = 90.0,
     DEEP = 180.0,
@@ -70,6 +61,15 @@ export default function Type({ areas }: any) {
       break;
   }
 
+  const handleObjectReturn = (obj: MyObject) => {
+    if (obj.isSelected == true) {
+      setExtra([...extra, obj.title]);
+      setTotal(total + obj.price);
+    } else if (obj.isSelected == false) {
+      setTotal(total - obj.price);
+      setExtra(extra.filter((item) => item !== obj.title));
+    }
+  };
   type ValidationSchema = z.infer<typeof validationSchema>;
   const validationSchema = z.object({
     fname: z.string().min(1, { message: "First Name is required" }),
@@ -405,7 +405,21 @@ export default function Type({ areas }: any) {
             {cash && (
               <>
                 <PayPalButton
-                  amount="0.01"
+                  amount={
+                    bedRoom * 15 +
+                    bathRoom * 20 +
+                    kitchen * 40 +
+                    prices -
+                    75 +
+                    total +
+                    (bedRoom * 15 +
+                      bathRoom * 20 +
+                      kitchen * 40 +
+                      prices -
+                      75 +
+                      total) *
+                      0.1
+                  }
                   // shippingPreference="NO_SHIPPING" // default is "GET_FROM_FILE"
                   onSuccess={(details: any, data: any) => {
                     alert("success");
@@ -480,10 +494,16 @@ export default function Type({ areas }: any) {
                   {date !== "Choose service Day..." ? " / " + time : ""}
                 </div>
               </div>
-
-              <div className="flex justify-between mt-14 border-t border-gray-600 pt-8">
+              {cash && (
+                <div className="flex justify-between  mt-14">
+                  <span>PayPal Tax:</span> 10%
+                </div>
+              )}
+              <div className="flex justify-between mt-2 border-t border-gray-600 pt-8">
                 <div className="uppercase font-bold">total</div>
-                <div className="text-xl">{prices}$</div>
+                <div className="text-xl">
+                  {cash ? prices + prices * 0.1 : prices}$
+                </div>
               </div>
             </div>
           </div>

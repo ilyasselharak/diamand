@@ -1,6 +1,7 @@
 import { model, models, Schema } from "mongoose";
 
 const FrequentlySchema = new Schema({
+  
   slide1: Object,
 });
 
