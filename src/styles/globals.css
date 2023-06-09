@@ -49,6 +49,9 @@
     margin-right: 0.5em;
   }
 }
-
+.arriveDate  {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
 
 

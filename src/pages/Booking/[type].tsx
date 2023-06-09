@@ -38,6 +38,10 @@ export default function Type({ areas }: any) {
   const [comment, setComment] = useState("");
   const [total, setTotal] = useState(0);
   const [date, setDate] = useState("Choose service Day...");
+
+  const [minDate, setMinDate] = useState("");
+  const today = new Date().toISOString().split("T")[0];
+
   const handleObjectReturn = (obj: MyObject) => {
     if (obj.isSelected == true) {
       setData([...data, obj.title]);
@@ -229,8 +233,10 @@ export default function Type({ areas }: any) {
                   onChange={(e) => {
                     setDate(e.target.value);
                   }}
-                  placeholder="MM/DD/YYYY"
-                  className="border border-gray-500 w-full p-2 rounded-md"
+                  placeholder="DD/MM/YYYY"
+                  min={minDate}
+                  onClick={() => setMinDate(today)}
+                  className="border border-gray-500 w-full arriveDate p-2 rounded-md"
                 />
                 <select
                   name="time"
@@ -409,10 +415,12 @@ export default function Type({ areas }: any) {
                   }}
                 />
                 <div
-                  className="flex w-full justify-end text-[#062c96] font-bold cursor-pointer"
+                  className="flex w-full justify-end text-[#062c96] font-bold"
                   onClick={() => setCash(!cash)}
                 >
-                  <label>i will pay Cash</label>
+                  <label className=" cursor-pointer uppercase">
+                    i will pay Cash
+                  </label>
                 </div>
               </>
             )}
