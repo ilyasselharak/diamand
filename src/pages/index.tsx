@@ -155,7 +155,33 @@ export default function Home({ faq, info }: any) {
               </div>
             ))}
           </div>
-
+          <div className=" text-xl md:text-4xl font-bold flex font-mono justify-center items-center mt-16">
+            <FcQuestions />
+            How it works
+          </div>
+          <div className="flex gap-16 text-6xl text-center flex-wrap justify-center mt-8">
+            <div className="md:w-1/4 w-2/4">
+              <FcHome className="mx-auto" />
+              <div className="text-green-500 text-xl mt-4">First Step</div>
+              <div className="text-sm">
+                Select size of home and what need to clean
+              </div>
+            </div>
+            <div className="md:w-1/4 w-2/4">
+              <MdCleaningServices className="mx-auto" />
+              <div className="text-green-500 text-xl mt-4">Second Step</div>
+              <div className="text-sm">
+                Select the level of cleanliness your home is in
+              </div>
+            </div>
+            <div className="md:w-1/4 w-2/4">
+              <FcCalendar className="mx-auto" />
+              <div className="text-green-500 text-xl mt-4">Third Step</div>
+              <div className="text-sm">
+                Schedule your preferred time or ask us
+              </div>
+            </div>
+          </div>
           <div className=" flex items-center text-xl gap-2 justify-center md:text-4xl mt-16 font-mono font-bold">
             Cleaning Plans
           </div>
@@ -191,33 +217,7 @@ export default function Home({ faq, info }: any) {
               </div>
             </div>
           </div>
-          <div className=" text-xl md:text-4xl font-bold flex font-mono justify-center items-center mt-16">
-            <FcQuestions />
-            How it works
-          </div>
-          <div className="flex gap-16 text-6xl text-center flex-wrap justify-center mt-8">
-            <div className="md:w-1/4 w-2/4">
-              <FcHome className="mx-auto" />
-              <div className="text-green-500 text-xl mt-4">First Step</div>
-              <div className="text-sm">
-                Select size of home and what need to clean
-              </div>
-            </div>
-            <div className="md:w-1/4 w-2/4">
-              <MdCleaningServices className="mx-auto" />
-              <div className="text-green-500 text-xl mt-4">Second Step</div>
-              <div className="text-sm">
-                Select the level of cleanliness your home is in
-              </div>
-            </div>
-            <div className="md:w-1/4 w-2/4">
-              <FcCalendar className="mx-auto" />
-              <div className="text-green-500 text-xl mt-4">Third Step</div>
-              <div className="text-sm">
-                Schedule your preferred time or ask us
-              </div>
-            </div>
-          </div>
+
           <div className="text-4xl font-bold flex font-mono justify-center items-center mt-16">
             FAQ
           </div>
