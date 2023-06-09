@@ -234,7 +234,7 @@ export default function Type({ areas }: any) {
                   onChange={(e) => {
                     setDate(e.target.value);
                   }}
-                  placeholder="DD/MM/YYYY"
+                  placeholder="MM/DD/YYYY"
                   min={minDate}
                   onClick={() => setMinDate(today)}
                   className="border border-gray-500 w-full arriveDate p-2 rounded-md"
