@@ -2,10 +2,11 @@ import { model, models, Schema } from "mongoose";
 
 const OrderSchema = new Schema(
   {
+    feautures: Object,
     packages: String,
     firstName: String,
     lastName: String,
-   
+
     bedRoom: Number,
     bathRoom: Number,
     kitchen: Number,

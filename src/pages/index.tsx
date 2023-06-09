@@ -2,13 +2,13 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Image from "next/image";
 import { findAllQuestions } from "./api/frequently";
+import { findAllContent } from "./api/home";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Pagination } from "swiper";
 import { FcCalendar, FcPhone, FcQuestions, FcHome } from "react-icons/fc";
 import { BiFridge, BiCabinet } from "react-icons/bi";
-import { useState } from "react";
-import { AiFillCaretDown } from "react-icons/ai";
+
 import { MdCleaningServices } from "react-icons/md";
 import { TbWindow, TbMicrowave, TbStairs } from "react-icons/tb";
 import { GiBrickWall, GiWashingMachine, GiMirrorMirror } from "react-icons/gi";
@@ -25,9 +25,8 @@ type Props = {
   title: string;
   content: string;
 };
-export default function Home({ faq }: any) {
-  const [pet, setPet] = useState(false);
-
+export default function Home({ faq, info }: any) {
+  console.log(info);
   return (
     <>
       <Header />
@@ -302,10 +301,12 @@ export default function Home({ faq }: any) {
 export async function getServerSideProps() {
   await initMongoose();
   const questions = await findAllQuestions();
+  const content = await findAllContent();
 
   return {
     props: {
       faq: JSON.parse(JSON.stringify(questions)),
+      info: JSON.parse(JSON.stringify(content)),
     },
   };
 }

@@ -24,7 +24,7 @@ type Props = {
   area: string;
 };
 export default function Type({ areas }: any) {
-  const [data, setData] = useState<string[]>([]);
+  const [extra, setExtra] = useState<string[]>([]);
 
   const router = useRouter();
   const path = router.query.type;
@@ -44,11 +44,11 @@ export default function Type({ areas }: any) {
 
   const handleObjectReturn = (obj: MyObject) => {
     if (obj.isSelected == true) {
-      setData([...data, obj.title]);
+      setExtra([...extra, obj.title]);
       setTotal(total + obj.price);
     } else if (obj.isSelected == false) {
       setTotal(total - obj.price);
-      setData(data.filter((item) => item !== obj.title));
+      setExtra(extra.filter((item) => item !== obj.title));
     }
   };
   enum PRICE {
@@ -92,6 +92,7 @@ export default function Type({ areas }: any) {
   const onSubmit: SubmitHandler<ValidationSchema> = (data) => {
     setTotal(bedRoom * 15 + bathRoom * 20 + kitchen * 40 + prices - 75 + total);
     axios.post("../api/order", {
+      feautures: extra,
       packages: path,
       bathRoom: bathRoom,
       bedRoom: bedRoom,
@@ -449,7 +450,7 @@ export default function Type({ areas }: any) {
                       <li>{kitchen} kitchen</li>
                       <li>{bathRoom} bathroom</li>
                     </ul>
-                    {data.map((item, index) => {
+                    {extra.map((item, index) => {
                       return (
                         <p key={index} className="uppercase mt-4">
                           + Clean {item}

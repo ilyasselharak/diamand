@@ -20,10 +20,12 @@ export default async function handle(req, res) {
     phone,
     packages,
     comment,
+    feautures,
     apt,
     //13
   } = req.body;
   const order = await Order.create({
+    feautures: feautures,
     packages: packages,
     firstName: fname,
     lastName: lname,
