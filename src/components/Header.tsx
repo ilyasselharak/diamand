@@ -1,8 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { FcHome, FcCallback, FcPlanner } from "react-icons/fc";
-import { GiVacuumCleaner } from "react-icons/gi";
+
 
 function Header() {
   const router = useRouter();
@@ -37,17 +36,24 @@ function Header() {
             </Link>
             <Link
               href={"/Booking/Standard"}
-              className={` ${
-                path.includes("Booking") ? "text-blue-400" : ""
-              } gap-1 items-center`}
+              className={` ${path.includes("Booking") ? "text-blue-400" : ""} `}
             >
               Book
             </Link>
-            <Link href={"/"} className="flex gap-1 items-center">
+            <Link
+              scroll={false}
+              href={"/#contact"}
+              className="flex gap-1 items-center"
+            >
               Contact
             </Link>
-            <Link href={"/"} className="flex gap-1 items-center">
-              Services
+            <Link
+              href={"/workplace"}
+              className={` ${
+                path.includes("workplace") ? "text-blue-400" : ""
+              } `}
+            >
+              Gallery
             </Link>
           </div>
         </div>

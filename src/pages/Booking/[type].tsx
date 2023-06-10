@@ -2,28 +2,24 @@ import Extra from "@/components/Extra";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { z } from "zod";
-import { initMongoose } from "@/lib/mongoose";
 import HomeFoter from "@/components/HomeFoter";
 import { useRouter } from "next/router";
-import React, { useState } from "react";
+import React, { ChangeEvent, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FcHome, FcCalendar } from "react-icons/fc";
 import Link from "next/link";
 import Image from "next/image";
-import { findAllAreas } from "../api/areas";
 import axios from "axios";
 import { PayPalButton } from "react-paypal-button-v2";
+import Script from "next/script";
 type MyObject = {
   title: string;
   isSelected: boolean;
   price: number;
 };
-type Props = {
-  _id: string;
-  area: string;
-};
-export default function Type({ areas }: any) {
+
+export default function Type() {
   const [extra, setExtra] = useState<string[]>([]);
 
   const router = useRouter();
@@ -38,6 +34,7 @@ export default function Type({ areas }: any) {
   const [comment, setComment] = useState("");
   const [total, setTotal] = useState(0);
   const [date, setDate] = useState("Choose service Day...");
+  const [surface, setSurface] = useState(1000);
 
   const [minDate, setMinDate] = useState("");
   const today = new Date().toISOString().split("T")[0];
@@ -80,6 +77,9 @@ export default function Type({ areas }: any) {
 
     phone: z.string().min(5, { message: "phone must be at least 6 numbers" }),
     address: z.string().min(1, { message: "Address is required" }),
+    city: z.string().min(1, { message: "city is required" }),
+    zip: z.string().min(1, { message: "Postal Code is required" }),
+    state: z.string().min(1, { message: "State/Region is required" }),
   });
   const {
     register,
@@ -106,8 +106,15 @@ export default function Type({ areas }: any) {
       email: data.email,
       phone: data.phone,
       address: data.address,
+      city: data.city,
+      zip: data.zip,
+      region: data.state,
+      surface: surface,
     });
-    router.push("/success");
+    router.push(`/success/${data.fname}`);
+  };
+  const handleSurfaceChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setSurface(Number(e.target.value));
   };
   return (
     <>
@@ -165,6 +172,24 @@ export default function Type({ areas }: any) {
                     <option value={2}>2 Kitchen</option>
                     <option value={3}>3 Kitchen</option>
                   </select>
+                </div>
+                <div className="flex gap-4 flex-wrap items-center mt-6">
+                  <div className="uppercase text-xl ">
+                    {" "}
+                    How is big your house:
+                  </div>
+                  <input
+                    type="range"
+                    min="1000"
+                    step={"500"}
+                    max="10000"
+                    value={surface}
+                    onChange={handleSurfaceChange}
+                  />
+                  <div>
+                    {surface}
+                    <span>sq</span>
+                  </div>
                 </div>
               </div>
               <div className="border-b border-gray-300 pb-8">
@@ -329,7 +354,7 @@ export default function Type({ areas }: any) {
               <div className="uppercase text-xl mt-6">Address</div>
               <div className="mt-3">Where would you like us to clean?</div>
               <div className="flex  flex-wrap gap-2 mt-8 border-b border-gray-300 pb-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-2 w-[100%]">
+                <div className="w-[100%]">
                   <div className="">
                     <input
                       type="text"
@@ -345,26 +370,66 @@ export default function Type({ areas }: any) {
                       </p>
                     )}
                   </div>
-                  <input
-                    type="text"
-                    className="border border-gray-400 rounded-md p-2"
-                    placeholder="Apt/Suite #"
-                    id="apt"
-                    onChange={(e) => {
-                      setApt(e.target.value);
-                    }}
-                  />
-
-                  <select className="border p-2 border-gray-400 rounded-md">
-                    <option>Choose area</option>
-                    {areas.map((item: Props) => (
-                      <option key={item._id} value={item.area}>
-                        {item.area}
-                      </option>
-                    ))}
-                  </select>
+                  <div className="grid grid-cols-1 md:grid-cols-2 mt-4  gap-4 flex-row">
+                    <input
+                      type="text"
+                      className="border  border-gray-400 rounded-md p-2"
+                      placeholder="Address Line 2"
+                      id="apt"
+                      onChange={(e) => {
+                        setApt(e.target.value);
+                      }}
+                    />
+                    <div>
+                      <input
+                        type="text"
+                        placeholder="City *"
+                        id="city"
+                        {...register("city")}
+                        className="border w-full border-gray-400 rounded-md p-2"
+                      />
+                      {errors.city && (
+                        <p className="text-xs italic text-red-500 mt-2">
+                          {" "}
+                          {errors.city?.message}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 mt-4  gap-4 flex-row">
+                    <div>
+                      <input
+                        type="text"
+                        placeholder="State/Region *"
+                        {...register("state")}
+                        className="border w-full border-gray-400 rounded-md p-2"
+                      />
+                      {errors.state && (
+                        <p className="text-xs italic text-red-500 mt-2">
+                          {" "}
+                          {errors.state?.message}
+                        </p>
+                      )}
+                    </div>
+                    <div>
+                      <input
+                        type="text"
+                        id="city"
+                        placeholder="ZIP/Postal code* "
+                        {...register("zip")}
+                        className="border w-full border-gray-400 rounded-md p-2"
+                      />
+                      {errors.zip && (
+                        <p className="text-xs italic text-red-500 mt-2">
+                          {" "}
+                          {errors.zip?.message}
+                        </p>
+                      )}
+                    </div>
+                  </div>
                 </div>
               </div>
+
               <div className="uppercase text-xl mt-6">
                 Comments & Special Instructions
               </div>
@@ -420,7 +485,6 @@ export default function Type({ areas }: any) {
                       total) *
                       0.1
                   }
-                  // shippingPreference="NO_SHIPPING" // default is "GET_FROM_FILE"
                   onSuccess={(details: any, data: any) => {
                     alert("success");
                   }}
@@ -481,7 +545,8 @@ export default function Type({ areas }: any) {
                       kitchen * 40 +
                       prices -
                       75 +
-                      total)
+                      total +
+                      ((surface - 1000) / 500) * 15)
                   }
                   $
                 </div>
@@ -510,19 +575,12 @@ export default function Type({ areas }: any) {
         </div>
         <div className="h-[200px]"></div>
         <HomeFoter />
+        <Script
+          src="//code.tidio.co/cknjplhesnbsxez5y1idm3dsw6p4ihsu.js"
+          async
+        ></Script>
       </main>
       <Footer />
     </>
   );
-}
-
-export async function getServerSideProps() {
-  await initMongoose();
-  const packages = await findAllAreas();
-
-  return {
-    props: {
-      areas: JSON.parse(JSON.stringify(packages)),
-    },
-  };
 }

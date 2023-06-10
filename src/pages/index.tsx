@@ -226,7 +226,10 @@ export default function Home({ faq, info }: any) {
               <Faq key={item._id} title={item.title} content={item.content} />
             ))}
           </div>
-          <div className="text-4xl font-bold flex font-mono justify-center items-center mt-16">
+          <div
+            id="contact"
+            className="text-4xl font-bold flex font-mono justify-center items-center mt-16"
+          >
             Contact Us
           </div>
           <div className="flex gap-4 mx-auto mt-16 flex-col w-[90%] md:w-[66%]">

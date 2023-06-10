@@ -1,7 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import { FcHome, FcCallback, FcOvertime } from "react-icons/fc";
-import { GiVacuumCleaner } from "react-icons/gi";
+import { FcHome, FcCallback, FcOvertime, FcGallery } from "react-icons/fc";
 
 function Footer() {
   return (
@@ -14,16 +13,19 @@ function Footer() {
           <FcHome />
           Home
         </Link>
-        <Link href={"/"} className="flex-col flex gap-1 items-center">
+        <Link
+          href={"/Booking/Standard"}
+          className="flex-col flex gap-1 items-center"
+        >
           <FcOvertime />
           Book
         </Link>
-        <Link href={"/"} className=" flex-col flex gap-1 items-center">
+        <Link href={"/#contact"} className=" flex-col flex gap-1 items-center">
           <FcCallback /> Contact
         </Link>
-        <Link href={"/"} className="flex-col flex gap-1 items-center">
-          <GiVacuumCleaner />
-          Services
+        <Link href={"/workplace"} className="flex-col flex gap-1 items-center">
+          <FcGallery />
+          Gallery
         </Link>
       </div>
     </div>

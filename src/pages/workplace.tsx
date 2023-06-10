@@ -1,6 +1,8 @@
+import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import HomeFoter from "@/components/HomeFoter";
 import Image from "next/image";
+import Script from "next/script";
 import React from "react";
 
 function workplace() {
@@ -81,8 +83,15 @@ function workplace() {
           </div>
         </div>
         <div className="mt-14"></div>
+
+        <HomeFoter />
+        <Script
+          src="//code.tidio.co/cknjplhesnbsxez5y1idm3dsw6p4ihsu.js"
+          async
+        ></Script>
       </main>
-      <HomeFoter />
+
+      <Footer />
     </>
   );
 }

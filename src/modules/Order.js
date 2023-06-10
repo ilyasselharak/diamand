@@ -6,7 +6,8 @@ const OrderSchema = new Schema(
     packages: String,
     firstName: String,
     lastName: String,
-
+    city: String,
+    zip: String,
     bedRoom: Number,
     bathRoom: Number,
     kitchen: Number,
@@ -16,6 +17,8 @@ const OrderSchema = new Schema(
     phone: String,
     address: String,
     apt: String,
+    region: String,
+    surface: Number,
     comment: String,
   },
   { timestamps: true }

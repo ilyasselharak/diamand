@@ -22,6 +22,10 @@ export default async function handle(req, res) {
     comment,
     feautures,
     apt,
+    zip,
+    city,
+    region,
+    surface,
     //13
   } = req.body;
   const order = await Order.create({
@@ -39,7 +43,10 @@ export default async function handle(req, res) {
     phone: phone,
     address: address,
     apt: apt,
+    zip: zip,
+    city: city,
+    surface: surface,
+    region: region,
   });
   order.save();
-  res.redirect(302, "/success");
 }
