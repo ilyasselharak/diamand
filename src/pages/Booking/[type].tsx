@@ -116,6 +116,7 @@ export default function Type() {
   const handleSurfaceChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSurface(Number(e.target.value));
   };
+
   return (
     <>
       <Header />
@@ -506,7 +507,7 @@ export default function Type() {
 
             {!cash && (
               <button
-                type="submit"
+              type="submit"
                 className="p-4 text-xl text-white font-bold bg-green-400 mb-20 rounded-md w-full "
               >
                 Book Now

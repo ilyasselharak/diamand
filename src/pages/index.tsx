@@ -13,21 +13,55 @@ import { BiFridge, BiCabinet } from "react-icons/bi";
 import { MdCleaningServices } from "react-icons/md";
 import { TbWindow, TbMicrowave, TbStairs } from "react-icons/tb";
 import { GiBrickWall, GiWashingMachine, GiMirrorMirror } from "react-icons/gi";
-
+import { z } from "zod";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 import Package from "@/components/Package";
 import HomeFoter from "@/components/HomeFoter";
 import Script from "next/script";
 import Link from "next/link";
 import { initMongoose } from "@/lib/mongoose";
 import Faq from "@/components/Faq";
+import axios from "axios";
+import { useState } from "react";
 
 type Props = {
   _id: string;
   title: string;
   content: string;
 };
+
 export default function Home({ faq, info }: any) {
-  console.log(info);
+  const [messages, setMessage] = useState("");
+  type ValidationSchema = z.infer<typeof validationSchema>;
+  const validationSchema = z.object({
+    fname: z.string().min(1, { message: "Name is required" }),
+    message: z.string().min(2, { message: "message is required" }),
+    email: z.string().min(1, { message: "Email is required" }).email({
+      message: "Must be a valid email",
+    }),
+
+    phone: z.string().min(5, { message: "phone must be at least 6 numbers" }),
+  });
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<ValidationSchema>({
+    mode: "onBlur",
+    resolver: zodResolver(validationSchema),
+  });
+  const onSubmit: SubmitHandler<ValidationSchema> = (data) => {
+    axios.post("../api/contact", {
+      firstName: data.fname,
+
+      email: data.email,
+      phone: data.phone,
+      message: data.message,
+    });
+    setMessage("the message have been send");
+  };
+
   return (
     <>
       <Header />
@@ -147,7 +181,10 @@ export default function Home({ faq, info }: any) {
               />
             </div>
             {info.map((item: any) => (
-              <div className="md:text-start text-center md:p-20 p-4 text-md font-bold md:text-xl">
+              <div
+                key={item._id}
+                className="md:text-start text-center md:p-20 p-4 text-md font-bold md:text-xl"
+              >
                 {item.slide1.title}
                 <div className="p-0 font-normal">
                   <p className="mt-4">{item.slide1.paragraph}</p>
@@ -232,14 +269,25 @@ export default function Home({ faq, info }: any) {
           >
             Contact Us
           </div>
-          <div className="flex gap-4 mx-auto mt-16 flex-col w-[90%] md:w-[66%]">
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            method="POST"
+            className="flex gap-4 mx-auto mt-16 flex-col w-[90%] md:w-[66%]"
+          >
             <div className="w-full">
               <label>Name</label>
               <div>
                 <input
                   className="w-full border border-gray-400 p-3 mt-2"
                   placeholder="Your Name"
+                  {...register("fname")}
                 />
+                {errors.fname && (
+                  <p className="text-xs italic text-red-500 mt-2">
+                    {" "}
+                    {errors.fname?.message}
+                  </p>
+                )}
               </div>
             </div>
             <div className="w-full">
@@ -249,7 +297,14 @@ export default function Home({ faq, info }: any) {
                   className="w-full border border-gray-400 p-3 mt-2"
                   type="email"
                   placeholder="Your Email"
+                  {...register("email")}
                 />
+                {errors.email && (
+                  <p className="text-xs italic text-red-500 mt-2">
+                    {" "}
+                    {errors.email?.message}
+                  </p>
+                )}
               </div>
             </div>
             <div className="w-full">
@@ -259,7 +314,14 @@ export default function Home({ faq, info }: any) {
                   type="tel"
                   className="w-full border border-gray-400 p-3 mt-2"
                   placeholder="Your Phone"
+                  {...register("phone")}
                 />
+                {errors.phone && (
+                  <p className="text-xs italic text-red-500 mt-2">
+                    {" "}
+                    {errors.phone?.message}
+                  </p>
+                )}
               </div>
             </div>
             <div className="w-full">
@@ -268,17 +330,28 @@ export default function Home({ faq, info }: any) {
                 <textarea
                   className="w-full border border-gray-400 p-2 pb-8 mt-2"
                   placeholder="Message"
+                  {...register("message")}
                 ></textarea>
+                {errors.message && (
+                  <p className="text-xs italic text-red-500 mt-2">
+                    {" "}
+                    {errors.message?.message}
+                  </p>
+                )}
               </div>
             </div>
             <p>
               By entering any information, you affirm you have read and agree to
               the Terms of Service and Privacy Policy.
             </p>
-            <button className="p-4 bg-green-400 mb-20 rounded-md text-white font-bold text-xl">
+            <button
+              type="submit"
+              className="p-4 bg-green-400 mb-20 rounded-md text-white font-bold text-xl"
+            >
               Send
             </button>
-          </div>
+            {messages}
+          </form>
         </div>
         <HomeFoter />
         <Script
