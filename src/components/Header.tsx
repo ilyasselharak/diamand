@@ -28,7 +28,7 @@ function Header() {
                 path == "/" ? "text-blue-400 " : ""
               } `}
             >
-              Hom
+              Home
             </Link>
             <Link
               href={"/Booking/Standard"}
