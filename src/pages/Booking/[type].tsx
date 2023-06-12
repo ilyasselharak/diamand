@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 import React, { ChangeEvent, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { FcHome, FcCalendar } from "react-icons/fc";
+import { FcHome, FcCalendar, FcFullTrash } from "react-icons/fc";
 import Link from "next/link";
 import Image from "next/image";
 import axios from "axios";
@@ -25,11 +25,13 @@ export default function Type() {
   const router = useRouter();
   const path = router.query.type;
   const [time, setTime] = useState("");
+  const [discount, setDiscount] = useState(0);
   const [bedRoom, setBedRoom] = useState(1);
   const [bathRoom, setBathRoom] = useState(1);
+  const [dirty, setDirty] = useState("Slightly");
   const [cash, setCash] = useState(true);
   const [kitchen, setKitchen] = useState(1);
-
+  const [priceDirty, setPriceDirty] = useState(0);
   const [apt, setApt] = useState("");
   const [comment, setComment] = useState("");
   const [total, setTotal] = useState(0);
@@ -121,8 +123,32 @@ export default function Type() {
     <>
       <Header />
       <main className="w-[95%] mx-auto">
-        <div className="mt-8 text-center font-bold text-2xl md:text-4xl uppercase">
-          Make A Book as <span>{path}</span>
+        <div className=" flex  justify-center gap-16 mt-8 text-center font-bold text-2xl md:text-4xl uppercase">
+          Make A Book as
+        </div>
+        <div className="flex justify-center mt-4 gap-8 text-xl">
+          <Link
+            href={"/Booking/Standard"}
+            className={`${
+              router.query.type == "Standard" ? "text-blue-400" : ""
+            }`}
+          >
+            Standard
+          </Link>
+          <Link
+            href={"/Booking/Deep"}
+            className={`${router.query.type == "Deep" ? "text-blue-400" : ""}`}
+          >
+            Deep
+          </Link>
+          <Link
+            href={"/Booking/Move-In-Out"}
+            className={`${
+              router.query.type == "Move-In-Out" ? "text-blue-400" : ""
+            }`}
+          >
+            Move IN/OUT
+          </Link>
         </div>
         <div className="flex  gap-2 mt-16">
           <form
@@ -141,38 +167,59 @@ export default function Type() {
                 tell us about your home
               </div>
               <div className="flex flex-col gap-5 border-b border-gray-300 pb-8">
-                <div className="flex gap-4 w-full md:w-[80%] mx-auto mt-4">
-                  <select
-                    onChange={(e) => {
-                      setBedRoom(Number(e.target.value));
-                    }}
-                    className="text-center border py-2 md:p-3 rounded-md w-full border-gray-500"
-                  >
-                    <option value={1}>1 Bedroom</option>
-                    <option value={2}>2 Bedroom</option>
-                    <option value={3}>3 Bedroom</option>
-                  </select>
-                  <select
-                    onChange={(e) => {
-                      setBathRoom(Number(e.target.value));
-                    }}
-                    className="text-center border py-2 md:p-3 rounded-md  w-full border-gray-500"
-                  >
-                    <option value={1}>1 Bathroom</option>
-                    <option value={2}>2 Bathroom</option>
-                    <option value={3}>3 Bathroom</option>
-                  </select>
+                <div className="flex gap-4  w-full md:w-[80%] mx-auto mt-4">
+                  <div className="w-full flex flex-col gap-4">
+                    <select
+                      onChange={(e) => {
+                        setBedRoom(Number(e.target.value));
+                      }}
+                      className="text-center border py-2 md:p-3 rounded-md w-full border-gray-500"
+                    >
+                      <option value={1}>1 Bedroom</option>
+                      <option value={2}>2 Bedroom</option>
+                      <option value={3}>3 Bedroom</option>
+                    </select>
 
-                  <select
-                    onChange={(e) => {
-                      setKitchen(Number(e.target.value));
-                    }}
-                    className="text-center border py-2 md:p-3 rounded-md w-full border-gray-500"
-                  >
-                    <option value={1}>1 Kitchen</option>
-                    <option value={2}>2 Kitchen</option>
-                    <option value={3}>3 Kitchen</option>
-                  </select>
+                    <select
+                      onChange={(e) => {
+                        setDirty(e.target.value);
+                        if (e.target.value == "Pretty") {
+                          setPriceDirty(40);
+                        } else if (e.target.value == "Very") {
+                          setPriceDirty(60);
+                        } else {
+                          setPriceDirty(0);
+                        }
+                      }}
+                      className="text-center border py-2 md:p-3 rounded-md  w-full border-gray-500"
+                    >
+                      <option value={"Slightly"}>Slightly Dirty</option>
+                      <option value={"Pretty"}>Pretty Dirty</option>
+                      <option value={"Very"}>Very Dirty</option>
+                    </select>
+                  </div>
+                  <div className="w-full flex flex-col gap-4">
+                    <select
+                      onChange={(e) => {
+                        setKitchen(Number(e.target.value));
+                      }}
+                      className="text-center border py-2 md:p-3 rounded-md w-full border-gray-500"
+                    >
+                      <option value={1}>1 Kitchen</option>
+                      <option value={2}>2 Kitchen</option>
+                      <option value={3}>3 Kitchen</option>
+                    </select>
+                    <select
+                      onChange={(e) => {
+                        setBathRoom(Number(e.target.value));
+                      }}
+                      className="text-center border py-2 md:p-3 rounded-md  w-full border-gray-500"
+                    >
+                      <option value={1}>1 Bathroom</option>
+                      <option value={2}>2 Bathroom</option>
+                      <option value={3}>3 Bathroom</option>
+                    </select>
+                  </div>
                 </div>
                 <div className="flex gap-4 flex-wrap items-center mt-6">
                   <div className="uppercase text-xl ">
@@ -436,8 +483,6 @@ export default function Type() {
               </div>
               <div className="border-b border-gray-300 pb-8">
                 <textarea
-                  name=""
-                  id=""
                   onChange={(e) => {
                     setComment(e.target.value);
                   }}
@@ -445,6 +490,21 @@ export default function Type() {
                   placeholder="Special Instructions: Is there anything we should know? Example: I am allergic to a particular cleaning product"
                   className="border border-gray-400 w-full resize-none mt-4 md:p-4 p-2 rounded-md"
                 ></textarea>
+              </div>
+              <div className="uppercase text-xl mt-6">Discount Friend</div>
+              <div className="border-b border-gray-300 pb-8">
+                <input
+                  placeholder="Discount Code:"
+                  onChange={(e) => {
+                    e.target.value == process.env.NEXT_PUBLIC_DISCOUNT_CODE
+                      ? setDiscount(10)
+                      : prices;
+                    console.log(prices);
+                  }}
+                  className={`border ${
+                    discount > 0 ? "border-green-400 " : " border-gray-400"
+                  } w-full resize-none mt-4 md:p-4 p-2 rounded-md`}
+                ></input>
               </div>
 
               <div className="mt-8">
@@ -484,7 +544,8 @@ export default function Type() {
                       prices -
                       75 +
                       total) *
-                      0.1
+                      0.1 -
+                    discount
                   }
                   onSuccess={(details: any, data: any) => {
                     alert("success");
@@ -499,19 +560,30 @@ export default function Type() {
                   onClick={() => setCash(!cash)}
                 >
                   <label className=" cursor-pointer uppercase">
-                    i will pay Cash
+                    i will pay Cash{" "}
+                    <span className="text-sm text-blue-400">without Tax</span>
                   </label>
                 </div>
               </>
             )}
 
             {!cash && (
-              <button
-              type="submit"
-                className="p-4 text-xl text-white font-bold bg-green-400 mb-20 rounded-md w-full "
-              >
-                Book Now
-              </button>
+              <>
+                <button
+                  type="submit"
+                  className="p-4 text-xl text-white font-bold bg-green-400 mb-20 rounded-md w-full "
+                >
+                  Book Now
+                </button>
+                <div
+                  className="flex w-full justify-end text-[#062c96] font-bold"
+                  onClick={() => setCash(!cash)}
+                >
+                  <label className=" cursor-pointer uppercase">
+                    i will pay with PayPal
+                  </label>
+                </div>
+              </>
             )}
           </form>
           <div className="hidden md:block relative w-[30%]">
@@ -522,13 +594,20 @@ export default function Type() {
 
               <div className="flex gap-2 mt-8 justify-between items-end">
                 <div className="flex gap-6">
-                  <FcHome className="text-4xl" />
+                  <div className="flex flex-col items-center">
+                    <FcHome className="text-4xl" />
+                    <div className="text-sm">{surface}sq</div>
+                  </div>
                   <div>
                     {bedRoom} Bedroom{" "}
                     <ul className="ml-4 list-disc ">
                       <li>{kitchen} kitchen</li>
                       <li>{bathRoom} bathroom</li>
                     </ul>
+                    <div className="flex items-center gap-1">
+                      <FcFullTrash />
+                      {dirty} Dirty
+                    </div>
                     {extra.map((item, index) => {
                       return (
                         <p key={index} className="uppercase mt-4">
@@ -542,6 +621,7 @@ export default function Type() {
                   {
                     (prices =
                       bedRoom * 15 +
+                      priceDirty +
                       bathRoom * 20 +
                       kitchen * 40 +
                       prices -
@@ -560,15 +640,22 @@ export default function Type() {
                   {date !== "Choose service Day..." ? " / " + time : ""}
                 </div>
               </div>
-              {cash && (
-                <div className="flex justify-between  mt-14">
-                  <span>PayPal Tax:</span> 10%
-                </div>
-              )}
+              <div className="mt-14">
+                {cash && (
+                  <div className="flex justify-between  ">
+                    <span>PayPal Tax:</span> 10%
+                  </div>
+                )}
+                {discount > 0 && (
+                  <div className="flex justify-between ">
+                    <span>Discount:</span> -10$
+                  </div>
+                )}
+              </div>
               <div className="flex justify-between mt-2 border-t border-gray-600 pt-8">
                 <div className="uppercase font-bold">total</div>
                 <div className="text-xl">
-                  {cash ? prices + prices * 0.1 : prices}$
+                  {cash ? prices + prices * 0.1 - discount : prices - discount}$
                 </div>
               </div>
             </div>

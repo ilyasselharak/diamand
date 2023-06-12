@@ -6,7 +6,7 @@ import { findAllContent } from "./api/home";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import { Pagination } from "swiper";
+import { Autoplay, Pagination } from "swiper";
 import { FcCalendar, FcPhone, FcQuestions, FcHome } from "react-icons/fc";
 import { BiFridge, BiCabinet } from "react-icons/bi";
 
@@ -79,8 +79,11 @@ export default function Home({ faq, info }: any) {
             pagination={{
               clickable: true,
             }}
-            modules={[Pagination]}
-            className="h-[210px] xl:h-[500px] md:h-[350px] mt-3"
+            autoplay={{
+              delay: 3000,
+            }}
+            modules={[Pagination, Autoplay]}
+            className="h-[210px] 2xl:h-[590px] xl:h-[480px] md:h-[330px] mt-3"
           >
             <SwiperSlide>
               <Image
@@ -108,10 +111,7 @@ export default function Home({ faq, info }: any) {
             </SwiperSlide>
           </Swiper>
 
-          <div className="font-bold text-sm md:text-xl text-center mt-2">
-            We Will Clean Your House As Soon As Possible
-          </div>
-          <div className="flex gap-3 justify-center mt-3">
+          <div className="flex gap-3 justify-center mt-8">
             <Link
               href={"/Booking/Standard"}
               className="bg-[#a1be3a] shadow-lg shadow-cyan-500/50 text-white px-6 py-3 rounded-xl w-fit flex items-center gap-2"

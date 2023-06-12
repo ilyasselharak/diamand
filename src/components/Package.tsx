@@ -64,7 +64,7 @@ export default function Package({ title, price, houre }: Props) {
               <Link href={`/Booking/${title}`}>
                 <button className="bg-cyan-500  text-center text-white px-6 py-3 rounded-xl w-fit ">
                   <div className="flex items-center gap-2">
-                    <FcCalendar /> Book Now
+                    <FcCalendar /> Next
                   </div>
                 </button>
               </Link>
