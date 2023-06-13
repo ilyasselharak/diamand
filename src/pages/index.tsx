@@ -3,13 +3,11 @@ import Header from "@/components/Header";
 import Image from "next/image";
 import { findAllQuestions } from "./api/frequently";
 import { findAllContent } from "./api/home";
-
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Autoplay, Pagination } from "swiper";
 import { FcCalendar, FcPhone, FcQuestions, FcHome } from "react-icons/fc";
 import { BiFridge, BiCabinet } from "react-icons/bi";
-
 import { MdCleaningServices } from "react-icons/md";
 import { TbWindow, TbMicrowave, TbStairs } from "react-icons/tb";
 import { GiBrickWall, GiWashingMachine, GiMirrorMirror } from "react-icons/gi";
@@ -24,6 +22,7 @@ import { initMongoose } from "@/lib/mongoose";
 import Faq from "@/components/Faq";
 import axios from "axios";
 import { useState } from "react";
+import Head from "next/head";
 
 type Props = {
   _id: string;
@@ -64,6 +63,17 @@ export default function Home({ faq, info }: any) {
 
   return (
     <>
+      <Head>
+        <title>Krystal Cleaning Services | HOME</title>
+        <meta
+          name="title"
+          content="Krystal Cleaning Services Pro - House Cleaning, Deep Cleaning"
+        />
+        <meta
+          name="description"
+          content="If you have your day to day cleaning under control, let us do the really dirty work. We provide deep clean services to reach the places you might have missed."
+        />
+      </Head>
       <Header />
 
       <main className="mt-4 font-mono">
@@ -344,13 +354,13 @@ export default function Home({ faq, info }: any) {
               By entering any information, you affirm you have read and agree to
               the Terms of Service and Privacy Policy.
             </p>
+
             <button
               type="submit"
               className="p-4 bg-green-400 mb-20 rounded-md text-white font-bold text-xl"
             >
               Send
             </button>
-            {messages}
           </form>
         </div>
         <HomeFoter />

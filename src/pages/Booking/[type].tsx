@@ -13,6 +13,7 @@ import Image from "next/image";
 import axios from "axios";
 import { PayPalButton } from "react-paypal-button-v2";
 import Script from "next/script";
+import Head from "next/head";
 type MyObject = {
   title: string;
   isSelected: boolean;
@@ -121,6 +122,17 @@ export default function Type() {
 
   return (
     <>
+      <Head>
+        <title>BOOK | {router.query.type}</title>
+        <meta
+          name="title"
+          content="Krystal Cleaning Services Pro - House Cleaning, Deep Cleaning"
+        />
+        <meta
+          name="description"
+          content="If you have your day to day cleaning under control, let us do the really dirty work. We provide deep clean services to reach the places you might have missed."
+        />
+      </Head>
       <Header />
       <main className="w-[95%] mx-auto">
         <div className=" flex  justify-center gap-16 mt-8 text-center font-bold text-2xl md:text-4xl uppercase">
