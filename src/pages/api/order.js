@@ -25,6 +25,7 @@ export default async function handle(req, res) {
     zip,
     city,
     region,
+    dirty,
     surface,
     //13
   } = req.body;
@@ -33,6 +34,7 @@ export default async function handle(req, res) {
     packages: packages,
     fname: fname,
     lname: lname,
+    dirty:dirty,
     comment: comment,
     bedRoom: bedRoom,
     bathRoom: bathRoom,

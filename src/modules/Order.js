@@ -11,6 +11,7 @@ const OrderSchema = new Schema(
     bedRoom: Number,
     bathRoom: Number,
     kitchen: Number,
+    dirty: Number,
     date: String,
     time: String,
     email: String,
