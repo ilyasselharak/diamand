@@ -31,8 +31,8 @@ export default async function handle(req, res) {
   const order = await Order.create({
     feautures: feautures,
     packages: packages,
-    firstName: fname,
-    lastName: lname,
+    fname: fname,
+    lname: lname,
     comment: comment,
     bedRoom: bedRoom,
     bathRoom: bathRoom,

@@ -104,8 +104,8 @@ export default function Type() {
       time: time,
       apt: apt,
       comment: comment,
-      firstName: data.fname,
-      lastName: data.lname,
+      fname: data.fname,
+      lname: data.lname,
       email: data.email,
       phone: data.phone,
       address: data.address,
@@ -350,7 +350,8 @@ export default function Type() {
                     <input
                       type="text"
                       {...register("fname")}
-                      id="firstName"
+                      id="fname"
+                      name="fname"
                       className="p-2 border border-gray-500 rounded-md w-full"
                       placeholder="Your First Name"
                     />
@@ -365,7 +366,8 @@ export default function Type() {
                     <input
                       type="text"
                       {...register("lname")}
-                      id="lastName"
+                      id="lname"
+                      name="lname"
                       className="p-2 border border-gray-500 rounded-md w-full"
                       placeholder="Your Last Name"
                     />

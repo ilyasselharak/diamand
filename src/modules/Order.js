@@ -4,8 +4,8 @@ const OrderSchema = new Schema(
   {
     feautures: Object,
     packages: String,
-    firstName: String,
-    lastName: String,
+    fname: String,
+    lname: String,
     city: String,
     zip: String,
     bedRoom: Number,
