@@ -259,7 +259,7 @@ export default function Type() {
                     <Extra
                       onClick={handleObjectReturn}
                       Dir="/assets/oven.svg"
-                      title="oven"
+                      title="Oven"
                       price={30}
                     />
                   </div>
@@ -268,7 +268,7 @@ export default function Type() {
                     <Extra
                       onClick={handleObjectReturn}
                       Dir="/assets/fridge.svg"
-                      title="fridge"
+                      title="Fridge"
                       price={30}
                     />
                   </div>
@@ -276,7 +276,7 @@ export default function Type() {
                     <Extra
                       onClick={handleObjectReturn}
                       Dir="/assets/microwave.svg"
-                      title="microwave"
+                      title="Microwave"
                       price={30}
                     />
                   </div>
@@ -284,7 +284,7 @@ export default function Type() {
                     <Extra
                       onClick={handleObjectReturn}
                       Dir="/assets/window.svg"
-                      title="inside window"
+                      title="Inside window"
                       price={30}
                     />
                   </div>
@@ -293,7 +293,7 @@ export default function Type() {
                     <Extra
                       onClick={handleObjectReturn}
                       Dir="/assets/cabinet.svg"
-                      title="cabinet"
+                      title="Cabinet"
                       price={30}
                     />
                   </div>
