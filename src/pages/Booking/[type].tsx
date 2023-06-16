@@ -103,7 +103,7 @@ export default function Type() {
       date: date,
       time: time,
       apt: apt,
-      dirty: dirty,
+      dirty: priceDirty,
       comment: comment,
       fname: data.fname,
       lname: data.lname,
