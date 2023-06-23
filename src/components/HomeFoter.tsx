@@ -4,10 +4,10 @@ import { BsFacebook, BsInstagram } from "react-icons/bs";
 
 export default function HomeFoter() {
   return (
-    <div className="bg-green-200 h-[200px] font-serif mt-16 p-2 hidden md:block">
+    <div className="bg-sky-500 text-white h-[200px] font-serif  p-2 hidden md:block">
       <div className="flex justify-around items-center mt-8">
         <div>
-          <div className="flex gap-4 font-bold text-gray-700 ml-4">
+          <div className="flex gap-4 font-bold text-white ml-4">
             <span className="hover:underline hover:text-xl">Book Now</span>
             <span className="hover:underline hover:text-xl">Call us</span>
             <Link

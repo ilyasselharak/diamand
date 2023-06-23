@@ -5,6 +5,7 @@ import { findAllQuestions } from "./api/frequently";
 import { findAllContent } from "./api/home";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+
 import { Autoplay, Pagination } from "swiper";
 import { FcCalendar, FcPhone, FcQuestions, FcHome } from "react-icons/fc";
 import { AiOutlineLock } from "react-icons/ai";
@@ -20,9 +21,40 @@ import Script from "next/script";
 
 import Head from "next/head";
 import Link from "next/link";
-import { useReducer } from "react";
+import { useReducer, useState } from "react";
+import axios from "axios";
 
 export default function Home() {
+  const [messages, setMessage] = useState("");
+  type ValidationSchema = z.infer<typeof validationSchema>;
+  const validationSchema = z.object({
+    fname: z.string().min(1, { message: "Name is required" }),
+    message: z.string().min(2, { message: "message is required" }),
+    email: z.string().min(1, { message: "Email is required" }).email({
+      message: "Must be a valid email",
+    }),
+
+    phone: z.string().min(5, { message: "phone must be at least 6 numbers" }),
+  });
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<ValidationSchema>({
+    mode: "onBlur",
+    resolver: zodResolver(validationSchema),
+  });
+  const onSubmit: SubmitHandler<ValidationSchema> = (data) => {
+    axios.post("../api/contact", {
+      firstName: data.fname,
+
+      email: data.email,
+      phone: data.phone,
+      message: data.message,
+    });
+    setMessage("the message have been send");
+  };
+
   return (
     <>
       <Head>
@@ -179,11 +211,204 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="h-[400px]"></div>
+        <div className="bg-sky-300 text-white text-6xl text-center py-10 font-[200]">
+          Check out some of our{" "}
+          <span className="border-b-2 border-white">services!</span>
+        </div>
+        <div>
+          <div className="grid grid-cols-2">
+            <div className="relative">
+              <Image src={"/Toilet.jpg"} fill alt={"img1"} />
+            </div>
+            <div className="p-8">
+              <div className="text-4xl">
+                Make Better{" "}
+                <span className="text-blue-400 underline">Living room</span>
+              </div>
+              <div className="flex flex-col gap-4 mt-8">
+                <div>Cleaning and highrise dusting</div>
+                <div>Cleaning and highrise dusting</div>
+                <div>Cleaning and highrise dusting</div>
+                <div>Cleaning and highrise dusting</div>
+                <div>Cleaning and highrise dusting</div>
+                <div>Cleaning and highrise dusting</div>
+              </div>
+            </div>
+          </div>
+          <div className="grid grid-cols-2">
+            <div className="py-8 ml-[40%]">
+              <div className="text-4xl">
+                Make Better{" "}
+                <span className="text-blue-400 underline">Living room</span>
+              </div>
+              <div className="flex flex-col gap-4 mt-8">
+                <div>Cleaning and highrise dusting</div>
+                <div>Cleaning and highrise dusting</div>
+                <div>Cleaning and highrise dusting</div>
+                <div>Cleaning and highrise dusting</div>
+                <div>Cleaning and highrise dusting</div>
+                <div>Cleaning and highrise dusting</div>
+              </div>
+            </div>
+            <div className="relative">
+              <Image src={"/Toilet.jpg"} fill alt={"img1"} />
+            </div>
+          </div>
+          <div className="grid grid-cols-2">
+            <div className="relative">
+              <Image src={"/Toilet.jpg"} fill alt={"img1"} />
+            </div>
+            <div className="p-8">
+              <div className="text-4xl">
+                Make Better{" "}
+                <span className="text-blue-400 underline">Living room</span>
+              </div>
+              <div className="flex flex-col gap-4 mt-8">
+                <div>Cleaning and highrise dusting</div>
+                <div>Cleaning and highrise dusting</div>
+                <div>Cleaning and highrise dusting</div>
+                <div>Cleaning and highrise dusting</div>
+                <div>Cleaning and highrise dusting</div>
+                <div>Cleaning and highrise dusting</div>
+              </div>
+            </div>
+          </div>
+          <div className="grid grid-cols-2">
+            <div className="py-8 ml-[40%]">
+              <div className="text-4xl">
+                Make Better{" "}
+                <span className="text-blue-400 underline">Living room</span>
+              </div>
+              <div className="flex flex-col gap-4 mt-8">
+                <div>Cleaning and highrise dusting</div>
+                <div>Cleaning and highrise dusting</div>
+                <div>Cleaning and highrise dusting</div>
+                <div>Cleaning and highrise dusting</div>
+                <div>Cleaning and highrise dusting</div>
+                <div>Cleaning and highrise dusting</div>
+              </div>
+            </div>
+            <div className="relative">
+              <Image src={"/Toilet.jpg"} fill alt={"img1"} />
+            </div>
+          </div>
+        </div>
+        <div className=" text-center text-white font-bold bg-sky-400 py-14">
+          <div className=" text-4xl"> Don’t wait, Book a cleaning now.</div>
+          <div className=" font-normal text-sm mt-4 text-gray-200">
+            Book expert home cleaners and handymen at a moment's notice. Just
+            pick a time and we’ll do the rest.
+          </div>
+          <div className="flex items-center justify-center mt-8">
+            <input
+              type="text"
+              className="border border-gray-300 w-[400px] px-2 h-[70px] py-2"
+              placeholder="Email Address"
+            />
+            <input
+              type="text"
+              className="border border-gray-300 w-[100px] h-[70px] px-2 py-2"
+              placeholder="Zip Code"
+            />
+            <input
+              type="submit"
+              className="bg-blue-400 px-4 py-2 w-[200px] text-2xl h-[70px]"
+              value={"Continue"}
+            />
+          </div>
+        </div>
+        <div className=" text-center text-4xl font-bold bg-gray-100 py-14">
+          Contact <span className="text-blue-300 underline">Us</span>
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            method="POST"
+            className="flex text-left text-base text-sky-400 gap-4 mx-auto mt-16 flex-col w-[90%] md:w-[66%]"
+          >
+            <div className="w-full">
+              <label>Name</label>
+              <div>
+                <input
+                  className="w-full border border-gray-400 p-3 mt-2"
+                  placeholder="Your Name"
+                  {...register("fname")}
+                />
+                {errors.fname && (
+                  <p className="text-xs italic text-red-500 mt-2">
+                    {" "}
+                    {errors.fname?.message}
+                  </p>
+                )}
+              </div>
+            </div>
+            <div className="w-full">
+              <label>Email</label>
+              <div>
+                <input
+                  className="w-full border border-gray-400 p-3 mt-2"
+                  type="email"
+                  placeholder="Your Email"
+                  {...register("email")}
+                />
+                {errors.email && (
+                  <p className="text-xs italic text-red-500 mt-2">
+                    {" "}
+                    {errors.email?.message}
+                  </p>
+                )}
+              </div>
+            </div>
+            <div className="w-full">
+              <label>Phone</label>
+              <div>
+                <input
+                  type="tel"
+                  className="w-full border border-gray-400 p-3 mt-2"
+                  placeholder="Your Phone"
+                  {...register("phone")}
+                />
+                {errors.phone && (
+                  <p className="text-xs italic text-red-500 mt-2">
+                    {" "}
+                    {errors.phone?.message}
+                  </p>
+                )}
+              </div>
+            </div>
+            <div className="w-full">
+              <label>Message</label>
+              <div>
+                <textarea
+                  className="w-full border border-gray-400 p-2 pb-8 mt-2"
+                  placeholder="Message"
+                  {...register("message")}
+                ></textarea>
+                {errors.message && (
+                  <p className="text-xs italic text-red-500 mt-2">
+                    {" "}
+                    {errors.message?.message}
+                  </p>
+                )}
+              </div>
+            </div>
+            <p>
+              By entering any information, you affirm you have read and agree to
+              the Terms of Service and Privacy Policy.
+            </p>
+
+            <button
+              type="submit"
+              className="p-4 bg-green-400 mb-20 rounded-md text-white font-bold text-xl"
+            >
+              Send
+            </button>
+          </form>
+        </div>
+
         <Script
           src="//code.tidio.co/cknjplhesnbsxez5y1idm3dsw6p4ihsu.js"
           async
         ></Script>
+        <HomeFoter />
       </main>
 
       <Footer />
