@@ -84,7 +84,7 @@ export default function Home() {
         </div>
       </header>
       <main>
-        <div className=" bg-[url('/home.jpg')] h-[760px] bg-cover text-white flex flex-col justify-center items-center gap-4">
+        <div className=" bg-[url('/home.jpg')] bg-center h-[760px] bg-cover text-white flex flex-col justify-center items-center gap-4">
           <div className="text-3xl md:text-6xl">Cleaning Made Easy</div>
           <div className="md:text-xl text-md md:w-[50%] w-[90%] text-center">
             Book expert home cleaners and handymen at a moment's notice. Just
@@ -263,8 +263,8 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2">
             <div className="py-8 ml-[40%]">
               <div className="text-4xl">
-                Make Better{" "}
-                <span className="text-blue-400 underline">Living room</span>
+                Your Beautiful
+                <span className="text-blue-400 underline">Kitchen</span>
               </div>
               <div className="flex flex-col gap-4 mt-8">
                 <div>Cleaning and highrise dusting</div>
@@ -295,8 +295,7 @@ export default function Home() {
             </div>
             <div className="p-8">
               <div className="text-4xl">
-                Make Better{" "}
-                <span className="text-blue-400 underline">Living room</span>
+                Tidy <span className="text-blue-400 underline">Bathroom</span>
               </div>
               <div className="flex flex-col gap-4 mt-8">
                 <div>Cleaning and highrise dusting</div>
@@ -311,8 +310,8 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2">
             <div className="py-8 ml-[40%]">
               <div className="text-4xl">
-                Make Better{" "}
-                <span className="text-blue-400 underline">Living room</span>
+                The Perfect{" "}
+                <span className="text-blue-400 underline">Bedroom</span>
               </div>
               <div className="flex flex-col gap-4 mt-8">
                 <div>Cleaning and highrise dusting</div>
