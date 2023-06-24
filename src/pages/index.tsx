@@ -85,8 +85,8 @@ export default function Home() {
       </header>
       <main>
         <div className=" bg-[url('/home.jpg')] h-[760px] bg-cover text-white flex flex-col justify-center items-center gap-4">
-          <div className="text-2xl md:text-6xl">Cleaning Made Easy</div>
-          <div className="text-xl md:w-[50%] w-[90%] text-center">
+          <div className="text-3xl md:text-6xl">Cleaning Made Easy</div>
+          <div className="md:text-xl text-md md:w-[50%] w-[90%] text-center">
             Book expert home cleaners and handymen at a moment's notice. Just
             pick a time and we’ll do the rest.
           </div>
@@ -103,10 +103,15 @@ export default function Home() {
             />
             <input
               type="submit"
-              className="bg-blue-400 px-4 py-2 md:w-[200px] w-[70px] text-2xl h-[70px]"
+              className="bg-blue-400 px-4  hidden md:block py-2 md:w-[200px] w-fit text-md md:text-2xl h-[70px]"
               value={"Continue"}
             />
           </div>
+          <input
+            type="submit"
+            className="bg-blue-400 px-4 py-2 md:hidden md:w-[200px] w-fit text-md md:text-2xl h-[70px]"
+            value={"Continue"}
+          />
         </div>
         <div>
           <div className="mt-14 text-center text-4xl font-bold">
@@ -322,20 +327,25 @@ export default function Home() {
           <div className="flex items-center justify-center mt-8 flex-wrap">
             <input
               type="text"
-              className="border border-gray-300 w-[400px] px-2 h-[70px] py-2"
+              className="border border-gray-300 w-[150px] md:w-[400px] px-2 h-[50px] md:h-[70px] py-2"
               placeholder="Email Address"
             />
             <input
               type="text"
-              className="border border-gray-300 w-[100px] h-[70px] px-2 py-2"
+              className="border border-gray-300 w-[85px] md:w-[100px] h-[50px] md:h-[70px] px-2 py-2"
               placeholder="Zip Code"
             />
             <input
               type="submit"
-              className="bg-blue-400 px-4 py-2 w-[200px] text-2xl h-[70px]"
+              className="bg-blue-400 px-4  hidden md:block py-2 md:w-[200px] w-fit text-md md:text-2xl h-[70px]"
               value={"Continue"}
             />
           </div>
+          <input
+            type="submit"
+            className="bg-blue-400 px-4 py-2 md:hidden md:w-[200px] w-fit text-md md:text-2xl h-[70px]"
+            value={"Continue"}
+          />
         </div>
         <div className=" text-center text-4xl font-bold bg-gray-100 py-14">
           Contact <span className="text-blue-300 underline">Us</span>
