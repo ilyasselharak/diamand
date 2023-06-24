@@ -76,7 +76,7 @@ export default function Home() {
           <Link href={"/"}>How it Works</Link>
           <Link href={"/"}>Our Services</Link>
           <Link
-            href={"/"}
+            href={"/Booking/Standard"}
             className="bg-blue-400 rounded-sm px-4 py-2 border-blue-200 border-2 text-white"
           >
             Book a Cleaning
@@ -90,7 +90,7 @@ export default function Home() {
             Book expert home cleaners and handymen at a moment's notice. Just
             pick a time and we’ll do the rest.
           </div>
-          <div className="flex items-center">
+          <div className="flex items-center flex-wrap">
             <input
               type="text"
               className="border border-gray-300 w-[400px] px-2 h-[70px] py-2"
@@ -254,7 +254,7 @@ export default function Home() {
               <Image src={"/Toilet.jpg"} fill alt={"img1"} />
             </div>
           </div>
-          <div className="grid grid-cols-2">
+          <div className="grid grid-cols-1 md:grid-cols-2">
             <div className="relative">
               <Image src={"/Toilet.jpg"} fill alt={"img1"} />
             </div>
@@ -299,7 +299,7 @@ export default function Home() {
             Book expert home cleaners and handymen at a moment's notice. Just
             pick a time and we’ll do the rest.
           </div>
-          <div className="flex items-center justify-center mt-8">
+          <div className="flex items-center justify-center mt-8 flex-wrap">
             <input
               type="text"
               className="border border-gray-300 w-[400px] px-2 h-[70px] py-2"
