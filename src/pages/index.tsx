@@ -260,7 +260,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2">
             <div className="py-8 ml-[40%]">
               <div className="text-4xl">
-                Your Beautiful
+                Your Beautiful{" "}
                 <span className="text-blue-400 underline">Kitchen</span>
               </div>
               <div className="flex flex-col gap-4 mt-8">
