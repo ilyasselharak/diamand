@@ -85,7 +85,7 @@ export default function Home() {
       </header>
       <main>
         <div className=" bg-[url('/home.jpg')] bg-center h-[760px] bg-cover text-white flex flex-col justify-center items-center gap-4">
-          <div className="text-5xl font-bold md:text-6xl">
+          <div className="text-3xl font-bold md:text-6xl">
             Cleaning Made Easy
           </div>
           <div className="md:text-xl text-md md:w-[50%] w-[90%] text-center">
