@@ -85,42 +85,39 @@ export default function Home() {
       </header>
       <main>
         <div className=" bg-[url('/home.jpg')] bg-center h-[760px] bg-cover text-white flex flex-col justify-center items-center gap-4">
-          <div className="text-3xl md:text-6xl">Cleaning Made Easy</div>
+          <div className="text-5xl font-bold md:text-6xl">
+            Cleaning Made Easy
+          </div>
           <div className="md:text-xl text-md md:w-[50%] w-[90%] text-center">
             Book expert home cleaners and handymen at a moment's notice. Just
             pick a time and we’ll do the rest.
           </div>
-          <div className="flex items-center flex-wrap">
+          <div className="grid grid-cols-1 gap-4 w-[85%] md:grid-cols-3 md:flex md:gap-0 md:justify-center">
             <input
               type="text"
-              className="border border-gray-300 w-[150px] md:w-[400px] px-2 h-[50px] md:h-[70px] py-2"
+              className="border border-gray-300 w-full md:w-[400px] px-2 h-[50px] md:h-[70px] py-2"
               placeholder="Email Address"
             />
             <input
               type="text"
-              className="border border-gray-300 w-[80px] md:w-[100px] h-[50px] md:h-[70px] px-2 py-2"
+              className="border border-gray-300 w-full md:w-[100px] h-[50px] md:h-[70px] px-2 py-2"
               placeholder="Zip Code"
             />
             <input
               type="submit"
-              className="bg-blue-400 px-4  hidden md:block py-2 md:w-[200px] w-fit text-md md:text-2xl h-[70px]"
+              className="bg-blue-400 px-4  py-2 md:w-[200px] w-full text-md md:text-2xl h-[70px]"
               value={"Continue"}
             />
           </div>
-          <input
-            type="submit"
-            className="bg-blue-400 px-4 py-2 md:hidden md:w-[200px] w-fit text-md md:text-2xl h-[70px]"
-            value={"Continue"}
-          />
         </div>
         <div>
-          <div className="mt-14 text-center text-4xl font-bold">
+          <div className="mt-14 text-gray-600 text-center text-4xl font-bold">
             How It <span className="text-blue-300 underline">works</span>
             <div className=" font-normal text-sm mt-4 text-gray-400">
               We’ve made all the hardwork for making it simple for you. Here’s
               how it works
             </div>
-            <div className="grid grid-cols-3 text-base w-[90%] mx-auto mt-14">
+            <div className="grid grid-cols-1 md:grid-cols-3 text-base w-[90%] mx-auto mt-14">
               <div className="flex flex-col items-center gap-3">
                 <Image
                   alt="home"
@@ -169,7 +166,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="mt-14 text-center text-4xl font-bold bg-gray-100 py-14">
+        <div className="mt-14 text-center text-4xl font-bold text-gray-600  bg-gray-100 py-14">
           Don't take our <span className="text-blue-300 underline">word</span>
           <div className=" font-normal text-sm mt-4 text-gray-400">
             Read what our past customers said about our cleaning and services.
