@@ -122,7 +122,12 @@ export default function Home() {
             </div>
             <div className="grid grid-cols-3 text-base w-[90%] mx-auto mt-14">
               <div className="flex flex-col items-center gap-3">
-                <FcCalendar className="text-6xl" />
+                <Image
+                  alt="home"
+                  width={100}
+                  height={100}
+                  src={"/assets/calendary.jpg"}
+                />
                 <div>
                   <div>Book a Cleaning</div>
                   <div className="font-normal text-gray-400">
@@ -131,8 +136,13 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-              <div className="flex flex-col items-center gap-3">
-                <AiOutlineLock className="text-6xl" />
+              <div className="flex flex-col items-center gap-1">
+                <Image
+                  alt="home"
+                  width={100}
+                  height={100}
+                  src={"/assets/lock.jpg"}
+                />{" "}
                 <div>
                   <div>Confirm Booking</div>
                   <div className="font-normal text-gray-400">
@@ -142,7 +152,12 @@ export default function Home() {
                 </div>
               </div>{" "}
               <div className="flex flex-col items-center gap-3">
-                <FcHome className="text-6xl" />
+                <Image
+                  alt="home"
+                  width={100}
+                  height={100}
+                  src={"/assets/home.jpg"}
+                />
                 <div>
                   <div>We’ll Clean it</div>
                   <div className="font-normal text-gray-400">
