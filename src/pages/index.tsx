@@ -338,12 +338,12 @@ export default function Home() {
           <div className="grid grid-cols-1 gap-4 w-[85%] md:grid-cols-3 md:flex md:gap-0 md:justify-center">
             <input
               type="text"
-              className="border border-gray-300 w-[150px] md:w-[400px] px-2 h-[50px] md:h-[70px] py-2"
+              className="border border-gray-300 w-full md:w-[400px] px-2 h-[50px] md:h-[70px] py-2"
               placeholder="Email Address"
             />
             <input
               type="text"
-              className="border border-gray-300 w-[85px] md:w-[100px] h-[50px] md:h-[70px] px-2 py-2"
+              className="border border-gray-300 w-full md:w-[100px] h-[50px] md:h-[70px] px-2 py-2"
               placeholder="Zip Code"
             />
             <input
