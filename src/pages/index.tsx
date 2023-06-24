@@ -72,7 +72,7 @@ export default function Home() {
         <div>
           <Image src={"/logo.png"} height={50} width={200} alt="logo" />
         </div>
-        <div className="flex gap-4 items-center">
+        <div className="gap-4 items-center hidden md:flex">
           <Link href={"/"}>How it Works</Link>
           <Link href={"/"}>Our Services</Link>
           <Link
@@ -93,7 +93,7 @@ export default function Home() {
           <div className="flex items-center flex-wrap">
             <input
               type="text"
-              className="border border-gray-300 w-[200px] md:w-[400px] px-2 h-[50px] md:h-[70px] py-2"
+              className="border border-gray-300 w-[150px] md:w-[400px] px-2 h-[50px] md:h-[70px] py-2"
               placeholder="Email Address"
             />
             <input
@@ -103,7 +103,7 @@ export default function Home() {
             />
             <input
               type="submit"
-              className="bg-blue-400 px-4 py-2 w-[200px] text-2xl h-[70px]"
+              className="bg-blue-400 px-4 py-2 md:w-[200px] w-[70px] text-2xl h-[70px]"
               value={"Continue"}
             />
           </div>
@@ -218,7 +218,12 @@ export default function Home() {
         <div>
           <div className="grid grid-cols-1 md:grid-cols-2">
             <div className="relative">
-              <Image src={"/Toilet.jpg"} fill alt={"img1"} />
+              <Image
+                src={"/Toilet.jpg"}
+                className="h-[400px] md:h-fit"
+                fill
+                alt={"img1"}
+              />
             </div>
             <div className="p-8">
               <div className="text-4xl">
@@ -251,12 +256,22 @@ export default function Home() {
               </div>
             </div>
             <div className="relative">
-              <Image src={"/Toilet.jpg"} fill alt={"img1"} />
+              <Image
+                src={"/Toilet.jpg"}
+                className="h-[400px] md:h-fit"
+                fill
+                alt={"img1"}
+              />
             </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2">
             <div className="relative">
-              <Image src={"/Toilet.jpg"} fill alt={"img1"} />
+              <Image
+                src={"/Toilet.jpg"}
+                className="h-[400px] md:h-fit"
+                fill
+                alt={"img1"}
+              />
             </div>
             <div className="p-8">
               <div className="text-4xl">
@@ -289,7 +304,12 @@ export default function Home() {
               </div>
             </div>
             <div className="relative">
-              <Image src={"/Toilet.jpg"} fill alt={"img1"} />
+              <Image
+                src={"/Toilet.jpg"}
+                className="h-[400px] md:h-fit"
+                fill
+                alt={"img1"}
+              />
             </div>
           </div>
         </div>
