@@ -234,13 +234,8 @@ export default function Home() {
         </div>
         <div>
           <div className="grid grid-cols-1 md:grid-cols-2">
-            <div className="relative">
-              <Image
-                src={"/Toilet.jpg"}
-                className="h-[400px] md:h-fit"
-                fill
-                alt={"img1"}
-              />
+            <div className="relative h-[400px] md:h-fit">
+              <Image src={"/Toilet.jpg"} fill alt={"img1"} />
             </div>
             <div className="p-8">
               <div className="text-4xl">
@@ -272,7 +267,7 @@ export default function Home() {
                 <div>Cleaning and highrise dusting</div>
               </div>
             </div>
-            <div className="relative">
+            <div className="relative h-[400px] md:h-fit">
               <Image
                 src={"/Toilet.jpg"}
                 className="h-[400px] md:h-fit"
@@ -282,7 +277,7 @@ export default function Home() {
             </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2">
-            <div className="relative">
+            <div className="relative h-[400px] md:h-fit">
               <Image
                 src={"/Toilet.jpg"}
                 className="h-[400px] md:h-fit"
@@ -319,7 +314,7 @@ export default function Home() {
                 <div>Cleaning and highrise dusting</div>
               </div>
             </div>
-            <div className="relative">
+            <div className="relative h-[400px] md:h-fit">
               <Image
                 src={"/Toilet.jpg"}
                 className="h-[400px] md:h-fit"
@@ -335,7 +330,7 @@ export default function Home() {
             Book expert home cleaners and handymen at a moment's notice. Just
             pick a time and we’ll do the rest.
           </div>
-          <div className="grid grid-cols-1 gap-4 w-[85%] md:grid-cols-3 md:flex md:gap-0 md:justify-center">
+          <div className="grid grid-cols-1 gap-4 w-full md:grid-cols-3 md:flex md:gap-0 md:justify-center mt-4">
             <input
               type="text"
               className="border border-gray-300 w-full md:w-[400px] px-2 h-[50px] md:h-[70px] py-2"
