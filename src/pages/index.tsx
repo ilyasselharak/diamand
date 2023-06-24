@@ -85,20 +85,20 @@ export default function Home() {
       </header>
       <main>
         <div className=" bg-[url('/home.jpg')] h-[760px] bg-cover text-white flex flex-col justify-center items-center gap-4">
-          <div className="text-6xl">Cleaning Made Easy</div>
-          <div className="text-xl w-[50%] text-center">
+          <div className="text-2xl md:text-6xl">Cleaning Made Easy</div>
+          <div className="text-xl md:w-[50%] w-[90%] text-center">
             Book expert home cleaners and handymen at a moment's notice. Just
             pick a time and we’ll do the rest.
           </div>
           <div className="flex items-center flex-wrap">
             <input
               type="text"
-              className="border border-gray-300 w-[400px] px-2 h-[70px] py-2"
+              className="border border-gray-300 w-[200px] md:w-[400px] px-2 h-[50px] md:h-[70px] py-2"
               placeholder="Email Address"
             />
             <input
               type="text"
-              className="border border-gray-300 w-[100px] h-[70px] px-2 py-2"
+              className="border border-gray-300 w-[80px] md:w-[100px] h-[50px] md:h-[70px] px-2 py-2"
               placeholder="Zip Code"
             />
             <input
@@ -216,7 +216,7 @@ export default function Home() {
           <span className="border-b-2 border-white">services!</span>
         </div>
         <div>
-          <div className="grid grid-cols-2">
+          <div className="grid grid-cols-1 md:grid-cols-2">
             <div className="relative">
               <Image src={"/Toilet.jpg"} fill alt={"img1"} />
             </div>
@@ -235,7 +235,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="grid grid-cols-2">
+          <div className="grid grid-cols-1 md:grid-cols-2">
             <div className="py-8 ml-[40%]">
               <div className="text-4xl">
                 Make Better{" "}
@@ -273,7 +273,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="grid grid-cols-2">
+          <div className="grid grid-cols-1 md:grid-cols-2">
             <div className="py-8 ml-[40%]">
               <div className="text-4xl">
                 Make Better{" "}
