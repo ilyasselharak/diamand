@@ -335,7 +335,7 @@ export default function Home() {
             Book expert home cleaners and handymen at a moment's notice. Just
             pick a time and we’ll do the rest.
           </div>
-          <div className="flex items-center justify-center mt-8 flex-wrap">
+          <div className="grid grid-cols-1 gap-4 w-[85%] md:grid-cols-3 md:flex md:gap-0 md:justify-center">
             <input
               type="text"
               className="border border-gray-300 w-[150px] md:w-[400px] px-2 h-[50px] md:h-[70px] py-2"
