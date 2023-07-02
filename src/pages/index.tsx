@@ -86,7 +86,7 @@ export default function Home() {
         <div className="md:hidden text-4xl">
           <BiMenu onClick={() => setMenu(!menu)} />
         </div>
-        <div className={`${menu ? "flex" : "hidden"} md:hidden flex-col`}>
+        <div className={`${menu ? "flex" : "hidden"} md:hidden gap-2 flex-col`}>
           <Link href={"/"}>How it Works</Link>
           <Link href={"/"}>Our Services</Link>
           <Link
@@ -192,10 +192,14 @@ export default function Home() {
                 <BiCommentDetail className="text-sky-400 text-4xl" />
 
                 <div className="mt-4 text-gray-400 font-normal text-xl">
-                  Maid Services NYC is a wonderful service. I utilized their
-                  services to clean a one bedroom apartment I was staying in NYC
-                  after throwing a get together. They were prompt, left the
-                  place spotless, and very professional.
+                  Patricia has been cleaning our house for several years and we
+                  couldn't be happier with her. She is very meticulous and a
+                  very hard worker and always leaves our house looking and
+                  smelling fresh, clean and tidy. She is also a very good
+                  communicator and always lets me know if there is ever going to
+                  be an issue (which is rare) with her being late or if she has
+                  to reschedule to a different day. I would highly recommend her
+                  cleaning service to anyone.
                 </div>
               </div>
               <div className="mt-6">
@@ -210,10 +214,10 @@ export default function Home() {
                 <BiCommentDetail className="text-sky-400 text-4xl" />
 
                 <div className="mt-4 text-gray-400 font-normal text-xl">
-                  I had them out to help me clean my new place for an office
-                  dinner I was having. I was very happy with the results.
-                  Jennifer came to the location on time. It is such a treat to
-                  have the home professionally cleaned.
+                  Patricia and her crews are amazing! They come biweekly to
+                  clean our entire house top to bottom. It is like a spring
+                  cleaning every other week! I would recommend Patricia and her
+                  team to anyone looking for cleaning services
                 </div>
               </div>
               <div className="mt-6">
@@ -258,12 +262,12 @@ export default function Home() {
                 <span className="text-blue-400 underline">Living room</span>
               </div>
               <div className="flex flex-col gap-4 mt-8">
-                <div>Cleaning and highrise dusting</div>
-                <div>Cleaning and highrise dusting</div>
-                <div>Cleaning and highrise dusting</div>
-                <div>Cleaning and highrise dusting</div>
-                <div>Cleaning and highrise dusting</div>
-                <div>Cleaning and highrise dusting</div>
+                <div>Furniture dusting </div>
+                <div>Vacuuming </div>
+                <div>Fixtures cleaning </div>
+                <div>Wall marks </div>
+                <div>Floor mopping / wet&dry mop</div>
+                <div>Carpet vacuuming</div>
               </div>
             </div>
           </div>
@@ -274,17 +278,16 @@ export default function Home() {
                 <span className="text-blue-400 underline">Kitchen</span>
               </div>
               <div className="flex flex-col gap-4 mt-8">
-                <div>Cleaning and highrise dusting</div>
-                <div>Cleaning and highrise dusting</div>
-                <div>Cleaning and highrise dusting</div>
-                <div>Cleaning and highrise dusting</div>
-                <div>Cleaning and highrise dusting</div>
-                <div>Cleaning and highrise dusting</div>
+                <div>DUST AND WIPE ALL REACHABLE SURFACES</div>
+                <div>VACUUM AND MOP FLOORS </div>
+                <div>WASH AND SCRUB SINK</div>
+                <div>CLEAN BACK SPLASH </div>
+                <div>EMPTY TRASH</div>
               </div>
             </div>
-            <div className="relative h-[400px] md:h-fit">
+            <div className="relative h-[400px] ">
               <Image
-                src={"/Toilet.jpg"}
+                src={"/kitchen.jpg"}
                 className="h-[400px] md:h-fit"
                 fill
                 alt={"img1"}
@@ -292,9 +295,9 @@ export default function Home() {
             </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2">
-            <div className="relative h-[400px] md:h-fit">
+            <div className="relative h-[400px] ">
               <Image
-                src={"/Toilet.jpg"}
+                src={"/bathRoom.jpg"}
                 className="h-[400px] md:h-fit"
                 fill
                 alt={"img1"}
@@ -305,12 +308,11 @@ export default function Home() {
                 Tidy <span className="text-blue-400 underline">Bathroom</span>
               </div>
               <div className="flex flex-col gap-4 mt-8">
-                <div>Cleaning and highrise dusting</div>
-                <div>Cleaning and highrise dusting</div>
-                <div>Cleaning and highrise dusting</div>
-                <div>Cleaning and highrise dusting</div>
-                <div>Cleaning and highrise dusting</div>
-                <div>Cleaning and highrise dusting</div>
+                <div>WIPE DOOR HANDLES AND LIGHT SWITCHS</div>
+                <div>WASH AND SANITIZE TOILET ,SHOWER AND SINK </div>
+                <div>WIPE MIRRORS AND GLASS FIXTURES</div>
+                <div>VACUM AND MOP ALL FLOORS </div>
+                <div>EMPRY OUT TRASH AND RECYCLING</div>
               </div>
             </div>
           </div>
@@ -321,17 +323,17 @@ export default function Home() {
                 <span className="text-blue-400 underline">Bedroom</span>
               </div>
               <div className="flex flex-col gap-4 mt-8">
-                <div>Cleaning and highrise dusting</div>
-                <div>Cleaning and highrise dusting</div>
-                <div>Cleaning and highrise dusting</div>
-                <div>Cleaning and highrise dusting</div>
-                <div>Cleaning and highrise dusting</div>
-                <div>Cleaning and highrise dusting</div>
+                <div>Dust and wipe all reachable surfaces </div>
+                <div>Wipe door handles and light switches</div>
+                <div>Wipe mirrors and glass fixtures </div>
+                <div>Make beds and change liners</div>
+                <div>Vacum and mop all floors </div>
+                <div>Take out the trash and recycling </div>
               </div>
             </div>
-            <div className="relative h-[400px] md:h-fit">
+            <div className="relative h-[400px] ">
               <Image
-                src={"/Toilet.jpg"}
+                src={"/bedRoom.jpg"}
                 className="h-[400px] md:h-fit"
                 fill
                 alt={"img1"}
