@@ -9,7 +9,7 @@ import "swiper/css";
 import { Autoplay, Pagination } from "swiper";
 import { FcCalendar, FcPhone, FcQuestions, FcHome } from "react-icons/fc";
 import { AiOutlineLock } from "react-icons/ai";
-import { BiCommentDetail } from "react-icons/bi";
+import { BiCommentDetail, BiMenu } from "react-icons/bi";
 import { TbWindow, TbMicrowave, TbStairs } from "react-icons/tb";
 import { GiBrickWall, GiWashingMachine, GiMirrorMirror } from "react-icons/gi";
 import { z } from "zod";
@@ -26,6 +26,7 @@ import axios from "axios";
 
 export default function Home() {
   const [messages, setMessage] = useState("");
+  const [menu, setMenu] = useState(false);
   type ValidationSchema = z.infer<typeof validationSchema>;
   const validationSchema = z.object({
     fname: z.string().min(1, { message: "Name is required" }),
@@ -68,11 +69,11 @@ export default function Home() {
           content="If you have your day to day cleaning under control, let us do the really dirty work. We provide deep clean services to reach the places you might have missed."
         />
       </Head>
-      <header className="flex justify-around mt-4 items-center">
+      <header className="grid grid-cols-2 items-center justify-items-center">
         <div>
           <Image src={"/logo.png"} height={50} width={200} alt="logo" />
         </div>
-        <div className="gap-4 items-center hidden md:flex">
+        <div className="hidden gap-4 items-center  md:flex">
           <Link href={"/"}>How it Works</Link>
           <Link href={"/"}>Our Services</Link>
           <Link
@@ -82,7 +83,21 @@ export default function Home() {
             Book a Cleaning
           </Link>
         </div>
+        <div className="md:hidden text-4xl">
+          <BiMenu onClick={() => setMenu(!menu)} />
+        </div>
+        <div className={`${menu ? "flex" : "hidden"} flex-col`}>
+          <Link href={"/"}>How it Works</Link>
+          <Link href={"/"}>Our Services</Link>
+          <Link
+            href={"/Booking/Standard"}
+            className="bg-blue-400 rounded-sm px-4 py-2 mb-4 border-blue-200 border-2 text-white"
+          >
+            Book a Cleaning
+          </Link>
+        </div>
       </header>
+
       <main>
         <div className=" bg-[url('/home.jpg')] bg-center h-[760px] bg-cover text-white flex flex-col justify-center items-center gap-4">
           <div className="text-3xl font-bold md:text-6xl">
@@ -446,8 +461,6 @@ export default function Home() {
         ></Script>
         <HomeFoter />
       </main>
-
-      <Footer />
     </>
   );
 }
