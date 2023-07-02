@@ -86,7 +86,7 @@ export default function Home() {
         <div className="md:hidden text-4xl">
           <BiMenu onClick={() => setMenu(!menu)} />
         </div>
-        <div className={`${menu ? "flex" : "hidden"} flex-col`}>
+        <div className={`${menu ? "flex" : "hidden"} md:hidden flex-col`}>
           <Link href={"/"}>How it Works</Link>
           <Link href={"/"}>Our Services</Link>
           <Link
