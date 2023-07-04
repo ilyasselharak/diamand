@@ -8,7 +8,7 @@ import "swiper/css";
 
 import { Autoplay, Pagination } from "swiper";
 import { FcCalendar, FcPhone, FcQuestions, FcHome } from "react-icons/fc";
-import { AiOutlineLock } from "react-icons/ai";
+import { AiOutlineArrowRight, AiOutlineLock } from "react-icons/ai";
 import { BiCommentDetail, BiMenu } from "react-icons/bi";
 import { TbWindow, TbMicrowave, TbStairs } from "react-icons/tb";
 import { GiBrickWall, GiWashingMachine, GiMirrorMirror } from "react-icons/gi";
@@ -347,7 +347,7 @@ export default function Home() {
             Book expert home cleaners and handymen at a moment's notice. Just
             pick a time and we’ll do the rest.
           </div>
-          <div className="grid grid-cols-1 gap-4 w-[85%] md:grid-cols-3 md:flex md:gap-0 justify-center mt-4">
+          <div className="grid grid-cols-1 gap-4 w-[85%] mx-auto mt-4 md:grid-cols-3 md:flex md:gap-0 md:justify-center">
             <input
               type="text"
               className="border border-gray-300 w-full md:w-[400px] px-2 h-[50px] md:h-[70px] py-2"
@@ -360,15 +360,10 @@ export default function Home() {
             />
             <input
               type="submit"
-              className="bg-blue-400 px-4  hidden md:block py-2 md:w-[200px] w-fit text-md md:text-2xl h-[70px]"
+              className="bg-blue-400 px-4  py-2 md:w-[200px] w-full text-md md:text-2xl h-[70px]"
               value={"Continue"}
             />
           </div>
-          <input
-            type="submit"
-            className="bg-blue-400 px-4 py-2 md:hidden md:w-[200px] w-fit text-md md:text-2xl h-[70px]"
-            value={"Continue"}
-          />
         </div>
         <div className=" text-center text-4xl font-bold bg-gray-100 py-14">
           Contact <span className="text-blue-300 underline">Us</span>
@@ -461,8 +456,49 @@ export default function Home() {
           src="//code.tidio.co/cknjplhesnbsxez5y1idm3dsw6p4ihsu.js"
           async
         ></Script>
-        <HomeFoter />
       </main>
+      <footer className="  py-8 bg-[#45c3d3] text-white">
+        <div className="w-[90%] mx-auto grid xl:grid-cols-4 justify-center md:grid-cols-3 grid-cols-1">
+          <div>
+            <div className="text-2xl">Quick links</div>
+            <ul className="mt-4">
+              <li>Help</li>
+              <li>About</li>
+              <li>Press</li>
+              <li>Contact Us</li>
+            </ul>
+          </div>
+          <div>
+            <div className="text-2xl">Legal stuff</div>
+            <ul className="mt-4">
+              <li>Terms of use</li>
+
+              <li>Privacy Policy</li>
+              <li>Money Back Guarantee</li>
+            </ul>
+          </div>
+          <div>
+            <div className="text-2xl">Our Locations</div>
+            <ul className="mt-4">
+              <li>Boston</li>
+              <li>Florida</li>
+            </ul>
+          </div>
+          <div>
+            <div className="text-2xl">Subscribe</div>
+            <div className="flex mt-4 items-center">
+              <input
+                type="email"
+                className="border  border-[#168d9b] py-4 px-3"
+                placeholder="Enter your email"
+              />
+              <div className="bg-[#168d9b] py-5 px-6">
+                <AiOutlineArrowRight />
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
     </>
   );
 }
