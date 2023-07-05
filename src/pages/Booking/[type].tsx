@@ -612,7 +612,7 @@ export default function Type() {
             </form>
             <div className="hidden md:block relative w-[30%]">
               <div className="sticky top-0 w-full border rounded-lg  border-gray-500">
-                <div className="border-b bg-[#45c3d3] text-white border-gray-300 text-center text-xl p-4 uppercase">
+                <div className="border-b bg-[#45c3d3] text-white rounded-tl-lg  rounded-tr-lg border-gray-300 text-center text-xl p-4 uppercase">
                   Booking Summary
                 </div>
 

@@ -457,8 +457,8 @@ export default function Home() {
           async
         ></Script>
       </main>
-      <footer className="  py-8 bg-[#45c3d3] text-white">
-        <div className="w-[90%] mx-auto grid xl:grid-cols-4 justify-center md:grid-cols-3 grid-cols-1">
+      <footer className="  py-8 bg-[#45c3d3] text-white ">
+        <div className="w-[90%] mx-auto grid xl:grid-cols-4 justify-center md:grid-cols-3 grid-cols-1 border-b border-gray-400 pb-4">
           <div>
             <div className="text-2xl">Quick links</div>
             <ul className="mt-4">
@@ -497,6 +497,9 @@ export default function Home() {
               </div>
             </div>
           </div>
+        </div>
+        <div className="flex justify-center bg-[#45c3d3] text-white pt-6 items-center">
+          © 2023 krystal. All rights reserved
         </div>
       </footer>
     </>
