@@ -99,15 +99,15 @@ export default function Home() {
       </header>
 
       <main>
-        <div className=" bg-[url('/home.jpg')] bg-center h-[760px] bg-cover text-white flex flex-col justify-center items-center gap-4">
+        <div className=" bg-[url('/home.jpg')] bg-center h-[760px] bg-cover text-white flex flex-col justify-center items-center gap-6">
           <div className="text-3xl font-bold md:text-6xl">
             Cleaning Made Easy
           </div>
-          <div className="md:text-xl text-md md:w-[50%] w-[90%] text-center">
-            Book expert home cleaners and handymen at a moment's notice. Just
-            pick a time and we’ll do the rest.
+          <div className="md:text-2xl text-md md:w-[50%] w-[90%] text-center">
+            Book expert home cleaners at a moment's notice. Just pick a time and
+            we’ll do the rest.
           </div>
-          <div className="grid grid-cols-1 gap-4 w-[85%] md:grid-cols-3 md:flex md:gap-0 md:justify-center">
+          <div className="grid mt-4 grid-cols-1 gap-4 w-[85%] md:grid-cols-3 md:flex md:gap-0 md:justify-center">
             <input
               type="text"
               className="border border-gray-300 w-full md:w-[400px] px-2 h-[50px] md:h-[70px] py-2"
@@ -472,8 +472,8 @@ export default function Home() {
             <div className="text-2xl">Legal stuff</div>
             <ul className="mt-4">
               <li>Terms of use</li>
-
               <li>Privacy Policy</li>
+              //TO DO
               <li>Money Back Guarantee</li>
             </ul>
           </div>

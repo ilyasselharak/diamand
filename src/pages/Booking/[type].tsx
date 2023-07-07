@@ -143,38 +143,15 @@ export default function Type() {
           <div className="text-4xl font-bold">1-781-367-6258</div>
         </header>
         <main className="  w-[95%] mx-auto">
-          <div className=" flex  justify-center gap-16  text-center font-bold text-2xl md:text-6xl mt-8 text-gray-600 uppercase">
-            Make A Book as
+          <div className=" flex  justify-center gap-16  font-bold text-2xl md:text-4xl mt-8 text-gray-600 ">
+            Book your cleaning
           </div>
-          <div className="flex justify-center mt-4 gap-8 text-xl">
-            <Link
-              href={"/Booking/Standard"}
-              className={`${
-                router.query.type == "Standard" ? "text-blue-400" : ""
-              }`}
-            >
-              Standard
-            </Link>
-            <Link
-              href={"/Booking/Deep"}
-              className={`${
-                router.query.type == "Deep" ? "text-blue-400" : ""
-              }`}
-            >
-              Deep
-            </Link>
-            <Link
-              href={"/Booking/Move-In-Out"}
-              className={`${
-                router.query.type == "Move-In-Out" ? "text-blue-400" : ""
-              }`}
-            >
-              Move IN/OUT
-            </Link>
+          <div className="flex justify-center mt-4 text-gray-400">
+            Its time to book our cleaning service for your home or apartment.
           </div>
           <div className="flex  gap-2 mt-16">
             <form
-              className="md:w-[75%] border border-gray-200 "
+              className="md:w-[75%] border bg-white  border-gray-200 "
               onSubmit={handleSubmit(onSubmit)}
               method="POST"
             >
@@ -184,6 +161,39 @@ export default function Type() {
                 </div>
               </div>
               <div className="p-5">
+                <div className="text-gray-400 text-xl">
+                  What type of cleaning?
+                </div>
+                <div className="grid grid-cols-3 gap-8 mt-4">
+                  <div
+                    className={`${
+                      router.query.type == "Standard"
+                        ? "text-blue-400 border-blue-400 "
+                        : "border-gray-200 text-gray-500"
+                    } border-2 font-bold   rounded-md  text-center  hover:text-blue-400 hover:border-blue-400  p-4`}
+                  >
+                    <Link href={"/Booking/Standard"}>Standard</Link>
+                  </div>
+                  <div
+                    className={`${
+                      router.query.type == "Deep"
+                        ? "text-blue-400 border-blue-400 "
+                        : "border-gray-200 text-gray-500"
+                    } border-2 font-bold  rounded-md  text-center hover:text-blue-400 hover:border-blue-400 p-4`}
+                  >
+                    <Link href={"/Booking/Deep"}>Deep</Link>
+                  </div>
+
+                  <div
+                    className={`${
+                      router.query.type == "Move-In-Out"
+                        ? "text-blue-400 border-blue-400"
+                        : "border-gray-200 text-gray-500"
+                    } border-2 font-bold  rounded-md  text-center  hover:text-blue-400 hover:border-blue-400  p-4`}
+                  >
+                    <Link href={"/Booking/Move-In-Out"}>Move IN/OUT</Link>
+                  </div>
+                </div>
                 <div className="uppercase text-xl mt-6">
                   tell us about your home
                 </div>
@@ -615,74 +625,75 @@ export default function Type() {
                 <div className="border-b bg-[#45c3d3] text-white rounded-tl-lg  rounded-tr-lg border-gray-300 text-center text-xl p-4 uppercase">
                   Booking Summary
                 </div>
-
-                <div className=" p-4 flex gap-2 mt-8 justify-between items-end">
-                  <div className="flex gap-6">
-                    <div className="flex flex-col items-center">
-                      <FcHome className="text-4xl" />
-                      <div className="text-sm">{surface}sq</div>
+                <div className="bg-white">
+                  <div className=" p-4 flex gap-2  justify-between items-end">
+                    <div className="flex gap-6">
+                      <div className="flex flex-col items-center">
+                        <FcHome className="text-4xl" />
+                        <div className="text-sm">{surface}sq</div>
+                      </div>
+                      <div>
+                        {bedRoom} Bedroom{" "}
+                        <ul className="ml-4 list-disc ">
+                          <li>{kitchen} kitchen</li>
+                          <li>{bathRoom} bathroom</li>
+                        </ul>
+                        <div className="flex items-center gap-1">
+                          <FcFullTrash />
+                          {dirty} Dirty
+                        </div>
+                        {extra.map((item, index) => {
+                          return (
+                            <p key={index} className="uppercase mt-4">
+                              + Clean {item}
+                            </p>
+                          );
+                        })}
+                      </div>
                     </div>
                     <div>
-                      {bedRoom} Bedroom{" "}
-                      <ul className="ml-4 list-disc ">
-                        <li>{kitchen} kitchen</li>
-                        <li>{bathRoom} bathroom</li>
-                      </ul>
-                      <div className="flex items-center gap-1">
-                        <FcFullTrash />
-                        {dirty} Dirty
-                      </div>
-                      {extra.map((item, index) => {
-                        return (
-                          <p key={index} className="uppercase mt-4">
-                            + Clean {item}
-                          </p>
-                        );
-                      })}
+                      {
+                        (prices =
+                          bedRoom * 15 +
+                          priceDirty +
+                          bathRoom * 20 +
+                          kitchen * 40 +
+                          prices -
+                          75 +
+                          total +
+                          ((surface - 1000) / 500) * 15)
+                      }
+                      $
                     </div>
                   </div>
-                  <div>
-                    {
-                      (prices =
-                        bedRoom * 15 +
-                        priceDirty +
-                        bathRoom * 20 +
-                        kitchen * 40 +
-                        prices -
-                        75 +
-                        total +
-                        ((surface - 1000) / 500) * 15)
-                    }
-                    $
-                  </div>
-                </div>
 
-                <div className="p-4 t-4 flex items-center gap-4">
-                  <FcCalendar className="text-4xl" />
-                  <div>
-                    {date}
-                    {date !== "Choose service Day..." ? " / " + time : ""}
+                  <div className="p-4 t-4 flex items-center gap-4">
+                    <FcCalendar className="text-4xl" />
+                    <div>
+                      {date}
+                      {date !== "Choose service Day..." ? " / " + time : ""}
+                    </div>
                   </div>
-                </div>
-                <div className=" p-4 mt-14">
-                  {cash && (
-                    <div className="flex justify-between  ">
-                      <span>PayPal Tax:</span> 10%
+                  <div className=" p-4 mt-14">
+                    {cash && (
+                      <div className="flex justify-between  ">
+                        <span>PayPal Tax:</span> 10%
+                      </div>
+                    )}
+                    {discount > 0 && (
+                      <div className="flex justify-between ">
+                        <span>Discount:</span> -10$
+                      </div>
+                    )}
+                  </div>
+                  <div className=" p-4 flex justify-between mt-2 border-t border-gray-600 pt-8">
+                    <div className="uppercase font-bold">total</div>
+                    <div className="text-xl">
+                      {cash
+                        ? prices + prices * 0.1 - discount
+                        : prices - discount}
+                      $
                     </div>
-                  )}
-                  {discount > 0 && (
-                    <div className="flex justify-between ">
-                      <span>Discount:</span> -10$
-                    </div>
-                  )}
-                </div>
-                <div className=" p-4 flex justify-between mt-2 border-t border-gray-600 pt-8">
-                  <div className="uppercase font-bold">total</div>
-                  <div className="text-xl">
-                    {cash
-                      ? prices + prices * 0.1 - discount
-                      : prices - discount}
-                    $
                   </div>
                 </div>
               </div>
